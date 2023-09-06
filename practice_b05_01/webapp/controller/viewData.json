@@ -1,0 +1,25 @@
+{
+    "SelectedProduct": "PLUS",
+     "ProductCollection": [
+       {
+         "ProductId": "PLUS",
+         "Name": "+"
+       },
+       {
+         "ProductId": "MINUS",
+         "Name": "-"
+       },
+       {
+         "ProductId": "MULTIPLE",
+         "Name": "*"
+       },
+       {
+         "ProductId": "DIVISION",
+         "Name": "/"
+       }
+     ],
+     "list": [],
+     "iresult": "",
+     "Editable": true,
+     "Enabled": true
+   }

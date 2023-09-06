@@ -1,0 +1,32 @@
+{
+	"folders": [
+		{
+			"name": "project_b05_01",
+			"path": "../../../../project_b05_01"
+		},
+		{
+			"name": "project_b05_03",
+			"path": "../../../../project_b05_03"
+		},
+		{
+			"name": "project_b05_04",
+			"path": "../../../../project_b05_04"
+		},
+		{
+			"name": "project_b05_05",
+			"path": "../../../../project_b05_05"
+		},
+		{
+			"name": "project_b05_06",
+			"path": "../../.."
+		},
+		{
+			"name": "project_b05_99",
+			"path": "../../../../project_b05_99"
+		},
+		{
+			"name": "practice_b05_01",
+			"path": "../../../../practice_b05_01"
+		}
+	]
+}

@@ -1,0 +1,48 @@
+<c:FragmentDefinition xmlns:c="sap.ui.core"
+xmlns:t="sap.ui.table"
+controllerName="projectb0506.controller.Main"
+    xmlns="sap.m">
+
+    <Dialog id="idDialog" title="Hello Dialog"
+        contentHeight="50%"
+        contentWidth="40%">
+        <content>
+            <t:Table id="idTable"
+				rows="{/Orders}"
+				selectionMode="MultiToggle"
+				selectionBehavior="Row"
+				visibleRowCount="7"
+				paste="onPaste"
+				ariaLabelledBy="title">
+				<t:extension>
+					<OverflowToolbar style="Clear">
+						<Title id="title" text="Products"/>
+					</OverflowToolbar>
+				</t:extension>
+				<t:columns>
+                    <t:Column>
+						<Label text="Product" />
+						<t:template>
+							<Input value="{OrderID}" />
+						</t:template>
+					</t:Column>
+                    <t:Column>
+						<Label text="Customer" />
+						<t:template>
+							<Input value="{CustomerID}" />
+						</t:template>
+					</t:Column>
+                    <t:Column>
+						<Label text="Employee" />
+						<t:template>
+							<Input value="{EmployeeID}" />
+						</t:template>
+					</t:Column>
+				    </t:columns>
+			    </t:Table>
+        </content>
+        <endButton>
+        <Button text="Close" press="onClose" />
+        </endButton>
+    </Dialog>
+</c:FragmentDefinition>
