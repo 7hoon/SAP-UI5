@@ -1,84 +1,84 @@
 <c:FragmentDefinition xmlns:c="sap.ui.core"
     xmlns:t="sap.ui.table" controllerName="sap.btp.ux400solving.controller.Main"
-    xmlns:core="sap.ui.core"
     xmlns="sap.m">
 
-    <Dialog id="idDialog" contentHeight="40%" contentWidth="90%">
+    <Dialog id="idDialog" contentHeight="30%" contentWidth="90%">
         <content>
-            <t:Table id="idTable" rows="{/Products}" selectionMode="MultiToggle" selectionBehavior="Row" visibleRowCount="5" paste="onPaste" ariaLabelledBy="title">
+            <t:Table id="idTable" rows="{/Products}" selectionMode="MultiToggle" selectionBehavior="Row" visibleRowCount="5" 
+            paste="onPaste" ariaLabelledBy="title" rowHeight="25px">
                 <t:extension>
                     <OverflowToolbar style="Clear">
                         <Title id="title" text="Products"/>
                     </OverflowToolbar>
                 </t:extension>
                 <t:columns>
-                    <t:Column>
+                    <t:Column hAlign="End"> 
                         <Label text="ProductID" />
                         <t:template>
-                            <Input value="{ProductID}" />
+                            <Text text="{ProductID}" />
                         </t:template>
                     </t:Column>
-                    <t:Column>
+                    <t:Column width="220px">
                         <Label text="ProductName" />
                         <t:template>
-                            <Input value="{ProductName}" />
+                            <Text text="{ProductName}" />
                         </t:template>
                     </t:Column>
-                    <t:Column>
+                    <t:Column hAlign="End">
                         <Label text="SupplierID" />
                         <t:template>
-                            <Input value="{SupplierID}" />
+                            <Text text="{SupplierID}" />
                         </t:template>
                     </t:Column>
-                    <t:Column>
+                    <t:Column hAlign="End">
                         <Label text="CategoryID" />
                         <t:template>
-                            <Input value="{CategoryID}" />
+                            <Text text="{CategoryID}" />
                         </t:template>
                     </t:Column>
-                    <t:Column>
+                    <t:Column width="200px">
                         <Label text="QuantityPerUnit" />
                         <t:template>
-                            <Input value="{QuantityPerUnit}" />
+                            <Text text="{QuantityPerUnit}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="UnitPrice" />
                         <t:template>
-                            <Input value="{UnitPrice}" />
+                            <Text text="{UnitPrice}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="UnitsInStock" />
                         <t:template>
-                            <Input value="{UnitsInStock}" />
+                            <Text text="{UnitsInStock}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="UnitsOnOrder" />
                         <t:template>
-                            <Input value="{UnitsOnOrder}" />
+                            <Text text="{UnitsOnOrder}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="ReorderLevel" />
                         <t:template>
-                            <Input value="{ReorderLevel}" />
+                            <Text text="{ReorderLevel}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="Discontinued" />
                         <t:template>
-                            <Input value="{
+                            <Text text="{
 									path : 'Discontinued',
 									formatter : '.formatter.transformDiscontinued'
 								}" />
                         </t:template>
                     </t:Column>
-                    <t:Column>
+                    <t:Column hAlign="Center">
                         <Label text="Status" />
                         <t:template>
-                            <core:Icon src="{= ${UnitPrice} >= 15 ? 'sap-icon://thumb-up' : 'sap-icon://thumb-down'}" 
+                            <c:Icon src="{= ${UnitPrice} >= 15 ? 'sap-icon://thumb-up' : 'sap-icon://thumb-down'}" 
                             color="{= ${UnitPrice} >= 15 ? 'rgb(27, 234, 33)' : 'rgb(234, 52, 27)'}" />
                         </t:template>
                     </t:Column>
