@@ -69,7 +69,7 @@
           "bundleName": "sap.btp.ux400solving.i18n.i18n"
         }
       },
-      "": {
+      "oData": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {}

@@ -4,7 +4,7 @@
 
     <Dialog id="idDialog" contentHeight="30%" contentWidth="90%">
         <content>
-            <t:Table id="idTable" rows="{/Products}" selectionMode="MultiToggle" selectionBehavior="Row" visibleRowCount="5" 
+            <t:Table id="idTable" rows="{oData>/Products}" selectionMode="MultiToggle" selectionBehavior="Row" visibleRowCount="5" 
             paste="onPaste" ariaLabelledBy="title" rowHeight="25px">
                 <t:extension>
                     <OverflowToolbar style="Clear">
@@ -15,62 +15,62 @@
                     <t:Column hAlign="End"> 
                         <Label text="ProductID" />
                         <t:template>
-                            <Text text="{ProductID}" />
+                            <Text text="{oData>ProductID}" />
                         </t:template>
                     </t:Column>
                     <t:Column width="220px">
                         <Label text="ProductName" />
                         <t:template>
-                            <Text text="{ProductName}" />
+                            <Text text="{oData>ProductName}" />
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="End">
                         <Label text="SupplierID" />
                         <t:template>
-                            <Text text="{SupplierID}" />
+                            <Text text="{oData>SupplierID}" />
                         </t:template>
                     </t:Column>
                     <t:Column hAlign="End">
                         <Label text="CategoryID" />
                         <t:template>
-                            <Text text="{CategoryID}" />
+                            <Text text="{oData>CategoryID}" />
                         </t:template>
                     </t:Column>
                     <t:Column width="200px">
                         <Label text="QuantityPerUnit" />
                         <t:template>
-                            <Text text="{QuantityPerUnit}" />
+                            <Text text="{oData>QuantityPerUnit}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="UnitPrice" />
                         <t:template>
-                            <Text text="{UnitPrice}" />
+                            <Text text="{oData>UnitPrice}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="UnitsInStock" />
                         <t:template>
-                            <Text text="{UnitsInStock}" />
+                            <Text text="{oData>UnitsInStock}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="UnitsOnOrder" />
                         <t:template>
-                            <Text text="{UnitsOnOrder}" />
+                            <Text text="{oData>UnitsOnOrder}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="ReorderLevel" />
                         <t:template>
-                            <Text text="{ReorderLevel}" />
+                            <Text text="{oData>ReorderLevel}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="Discontinued" />
                         <t:template>
                             <Text text="{
-									path : 'Discontinued',
+									path : 'oData>Discontinued',
 									formatter : '.formatter.transformDiscontinued'
 								}" />
                         </t:template>
@@ -78,8 +78,8 @@
                     <t:Column hAlign="Center">
                         <Label text="Status" />
                         <t:template>
-                            <c:Icon src="{= ${UnitPrice} >= 15 ? 'sap-icon://thumb-up' : 'sap-icon://thumb-down'}" 
-                            color="{= ${UnitPrice} >= 15 ? 'rgb(27, 234, 33)' : 'rgb(234, 52, 27)'}" />
+                            <c:Icon src="{= ${oData>UnitPrice} >= 15 ? 'sap-icon://thumb-up' : 'sap-icon://thumb-down'}" 
+                            color="{= ${oData>UnitPrice} >= 15 ? 'rgb(27, 234, 33)' : 'rgb(234, 52, 27)'}" />
                         </t:template>
                     </t:Column>
                 </t:columns>

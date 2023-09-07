@@ -39,7 +39,7 @@ sap.ui.define(
       },
       onOpenProduct: function () {
         var oDialog = sap.ui.getCore().byId("idDialog");
-        var oModel = this.getView().getModel();
+        var oModel = this.getView().getModel("oData");
         if (oDialog) {
           oDialog.open();
         } else {
@@ -48,7 +48,7 @@ sap.ui.define(
             type: "XML",
             controller: this,
           }).then(function (oDialog) {
-            oDialog.setModel(oModel);
+            oDialog.setModel(oModel, "oData");
             oDialog.open();
           });
         }
