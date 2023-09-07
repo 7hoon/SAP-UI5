@@ -8,8 +8,8 @@
         <Text text="버튼을 클릭하면 아래 input에 값이 랜덤으로 채워집니다." />
         <Input id="idInput" type="Number" change="onValueChange"/>
         <Button text="Random" press="onRandomPress"/>
-        
-        </VBox>
+		</VBox>
+		<VBox class="sapUiLargeMarginBegin">
         <t:Table
 				rows="{list>/list}"
 				selectionMode="MultiToggle"
@@ -31,7 +31,8 @@
 					</t:Column>
 				</t:columns>
 			</t:Table>
-            <Button text="open Product" press="onOpenProduct"/>
+			 <Button text="open Product" press="onOpenProduct"/>
+        </VBox>
         </content>
     </Page>
 </mvc:View>
