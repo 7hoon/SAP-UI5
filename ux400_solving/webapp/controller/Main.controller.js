@@ -11,15 +11,15 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("sap.btp.ux400solving.controller.Main", {
-        formatter: {
-            transformDiscontinued: function(Discontinued) { 
-                    if (Discontinued) {
-                        return 'Yes';
-                    }else{
-                        return "No" ;
-                }
-            }
-          },
+      formatter: {
+        transformDiscontinued: function (Discontinued) {
+          if (Discontinued) {
+            return "Yes";
+          } else {
+            return "No";
+          }
+        },
+      },
       onInit: function () {
         var oDatas = { list: [] };
         var oModel = new JSONModel(oDatas);
@@ -28,14 +28,20 @@ sap.ui.define(
       onRandomPress: function () {
         var randomNumber = Math.floor(Math.random() * 100) + 1;
         var oInput = this.byId("idInput");
+
+        oInput.setValue(randomNumber);
+        oInput.setValueState("None");
+
+        this.onAdd({ num: randomNumber });
+      },
+      onAdd: function (nNum) {
         var oModel = this.getView().getModel("list");
         var alist = oModel.getProperty("/list");
-        oInput.setValue(randomNumber);
+        
         alist.push({
-          value: randomNumber,
+          value: nNum.num,
         });
         oModel.setProperty("/list", alist);
-        oInput.setValueState("None");
       },
       onOpenProduct: function () {
         var oDialog = sap.ui.getCore().byId("idDialog");
@@ -59,24 +65,22 @@ sap.ui.define(
 
         oDialog.close();
       },
-      onValueChange: function(){
+      onValueChange: function () {
         var oInput = this.byId("idInput");
         var nNum = oInput.getValue();
         var oModel = this.getView().getModel("list");
         var alist = oModel.getProperty("/list");
         if (nNum <= 100 && nNum >= 1) {
-            alist.push({
-                value: nNum,
-              });
-              oModel.setProperty("/list", alist);
-              oInput.setValueState("None");
-              
+          alist.push({
+            value: nNum,
+          });
+          oModel.setProperty("/list", alist);
+          oInput.setValueState("None");
         } else {
-          
           oInput.setValueState("Error");
           oInput.setValueStateText("1이상 100이하의 숫자를 입력하세요");
         }
-      }
+      },
     });
   }
 );
