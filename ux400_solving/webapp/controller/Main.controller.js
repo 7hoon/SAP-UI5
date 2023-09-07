@@ -68,13 +68,8 @@ sap.ui.define(
       onValueChange: function () {
         var oInput = this.byId("idInput");
         var nNum = oInput.getValue();
-        var oModel = this.getView().getModel("list");
-        var alist = oModel.getProperty("/list");
         if (nNum <= 100 && nNum >= 1) {
-          alist.push({
-            value: nNum,
-          });
-          oModel.setProperty("/list", alist);
+          this.onAdd({ num: nNum });
           oInput.setValueState("None");
         } else {
           oInput.setValueState("Error");
