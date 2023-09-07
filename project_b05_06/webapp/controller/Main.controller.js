@@ -11,6 +11,20 @@ sap.ui.define(
     "use strict";
 
     return Controller.extend("projectb0506.controller.Main", {
+      formatter: {
+        // formatter 객체 안에다 format function 들을 넣고 관리
+        fnDateString: function (oDate) {
+          // fnDateString => 날짜 객체를 yyyy-MM-dd 형태로 변경
+          if (oDate) {
+            var oDateTimeInstance =
+              sap.ui.core.format.DateFormat.getDateTimeInstance({
+                pattern: "yyyy-MM-dd",
+              });
+
+            return oDateTimeInstance.format(oDate);
+          }
+        }
+      },
       onInit: function () {
         // var oDatas = {
         //   list: [{ Name: 12, Address: "test", Phone: 13, Department: 0 }],
@@ -19,7 +33,6 @@ sap.ui.define(
         // sap.ui.getCore().setModel(oModel);
       },
       onValueHelp: function () {
-
         var oDialog = this.byId("idDialog");
         if (!oDialog) {
           this.loadFragment({
@@ -49,7 +62,6 @@ sap.ui.define(
         //     oDialog.open();
         //   });
         // }
-
       },
       onClose: function (oEvent) {
         var oButton = oEvent.getSource();

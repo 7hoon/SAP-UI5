@@ -1,105 +1,97 @@
 <mvc:View controllerName="projectb0506.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m"
-    xmlns:f="sap.f"
+	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:f="sap.f"
 	xmlns:layout="sap.ui.layout">
-<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
-			<!-- DynamicPage Title -->
-			<f:title>
-				<f:DynamicPageTitle>
-					<f:heading>
-						<Title text="NorthWind"/>
-					</f:heading>
-				</f:DynamicPageTitle>
-			</f:title>
-			<!-- DynamicPage Header -->
-			<f:header>
-				<f:DynamicPageHeader pinnable="true">
-					<layout:HorizontalLayout allowWrapping="true">
-						<layout:VerticalLayout class="sapUiMediumMarginEnd">
-							<Label text="Order Id"/>
-							<Input  showValueHelp="true" valueHelpRequest="onValueHelp"/>
-							<!-- <ObjectAttribute title="Location" text="Warehouse A"/>
+	<f:DynamicPage id="dynamicPageId" headerExpanded="{/headerExpanded}" toggleHeaderOnTitleClick="{/titleClickable}">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="NorthWind"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<!-- DynamicPage Header -->
+		<f:header>
+			<f:DynamicPageHeader pinnable="true">
+				<layout:HorizontalLayout allowWrapping="true">
+					<layout:VerticalLayout class="sapUiMediumMarginEnd">
+						<Label text="Order Id"/>
+						<Input showValueHelp="true" valueHelpRequest="onValueHelp"/>
+						<!-- <ObjectAttribute title="Location" text="Warehouse A"/>
 							<ObjectAttribute title="Halway" text="23L"/>
 							<ObjectAttribute title="Rack" text="34"/> -->
 
-							<!-- Framgent File : Oreder.fragment.xml
+						<!-- Framgent File : Oreder.fragment.xml
 							Framgent 안에 Dialog 구성
 							Dialog content 안에는 sap.ui.table.Table 을 세팅 -->
-							
-						</layout:VerticalLayout>
 
-						<layout:VerticalLayout>
-							<ObjectAttribute title="Availability"/>
-							<ObjectStatus text="In Stock" state="Success" />
-						</layout:VerticalLayout>
-					</layout:HorizontalLayout>
-				</f:DynamicPageHeader>
-			</f:header>
-			<f:content>
-				<Table id="idProductsTable"
-						sticky="HeaderToolbar,ColumnHeaders"
-						inset="false"
-						items="{/Orders}"
-					   class="sapFDynamicPageAlignContent"
-					   width="auto">
-					<headerToolbar>
-						<Toolbar>
-							<Title text="Products" level="H2"/>
-						</Toolbar>
-					</headerToolbar>
-					<columns>
-						<Column
-								width="12em">
-							<Text text="Product" />
-						</Column>
-                        <Column
-								width="12em">
-							<Text text="Customer" />
-						</Column>
-                        <Column
-								width="12em">
-							<Text text="Employee" />
-						</Column>
-                        <Column
-								width="12em">
-							<Text text="OrderDate" />
-						</Column>
-                        <Column
-								width="12em">
-							<Text text="RequiredDate" />
-						</Column>
-                        <Column
-								width="12em">
-							<Text text="ShippedDate" />
-						</Column>
-					</columns>
-					<items>
-						<ColumnListItem>
-							<cells>
-								<Text text="{OrderID}" />
-                                <Text text="{CustomerID}" />
-                                <Text text="{EmployeeID}" />
-                                <Text text="{OrderDate}" />
-                                <Text text="{RequiredDate}" />
-                                <Text text="{ShippedDate}" />
-							</cells>
-						</ColumnListItem>
-					</items>
-				</Table>
-			</f:content>
-			<!-- DynamicPage Footer -->
-			<f:footer>
-				<OverflowToolbar>
-					<Button icon="sap-icon://message-popup"
-							text="{/messagesLength}"
-							type="Emphasized"
-							press="onMessageButtonPress"
-							visible="{= !!${/messagesLength}}"/>
-					<ToolbarSpacer/>
-					<Button type="Accept" text="Accept"/>
-					<Button type="Reject" text="Reject"/>
-				</OverflowToolbar>
-			</f:footer>
-		</f:DynamicPage>
+					</layout:VerticalLayout>
+
+					<layout:VerticalLayout>
+						<ObjectAttribute title="Availability"/>
+						<ObjectStatus text="In Stock" state="Success" />
+					</layout:VerticalLayout>
+				</layout:HorizontalLayout>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table id="idProductsTable" sticky="HeaderToolbar,ColumnHeaders" inset="false" items="{/Orders}" class="sapFDynamicPageAlignContent" width="auto">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Products" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Product" />
+					</Column>
+					<Column width="12em">
+						<Text text="Customer" />
+					</Column>
+					<Column width="12em">
+						<Text text="Employee" />
+					</Column>
+					<Column width="12em">
+						<Text text="OrderDate" />
+					</Column>
+					<Column width="12em">
+						<Text text="RequiredDate" />
+					</Column>
+					<Column width="12em">
+						<Text text="ShippedDate" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Text text="{OrderID}" />
+							<Text text="{CustomerID}" />
+							<!-- Expression Binding 적용-->
+							<!-- <Text text="{EmployeeID}" /> -->
+							<!-- <Text text="{= ${EmployeeID} > 3 ? 'Yes' : 'No' }" /> -->
+							<Input enabled="{= ${EmployeeID} > 3 ? false : true }" value="{CustomerID}" />
+							<!-- Formatter 함수 적용-->
+							<Text text="{
+									path : 'OrderDate',
+									formatter : '.formatter.fnDateString'
+								}" />
+							<Text text="{path : 'RequiredDate', formatter : '.formatter.fnDateString' }" />
+							<Text text="{path : 'ShippedDate', formatter : '.formatter.fnDateString' }" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+		<!-- DynamicPage Footer -->
+		<f:footer>
+			<OverflowToolbar>
+				<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress" visible="{= !!${/messagesLength}}"/>
+				<ToolbarSpacer/>
+				<Button type="Accept" text="Accept"/>
+				<Button type="Reject" text="Reject"/>
+			</OverflowToolbar>
+		</f:footer>
+	</f:DynamicPage>
 </mvc:View>
