@@ -73,18 +73,18 @@ sap.ui.define(
       },
       onBeforeOpen: function () {
         var oTable = sap.ui.getCore().byId("idOrderTable");
-        // var aFilters = [
-        //   new Filter({
-        //     path: "EmployeeID",
-        //     operator: "GE", // FilterOperator.GE
-        //     value1: 4,
-        //   }),
-        //   new Filter({
-        //     path: "CustomerID",
-        //     operator: "Contains", // FilterOperator.Contains
-        //     value1: "R",
-        //   }),
-        // ];
+        var aFilters = [
+          new Filter({
+            path: "EmployeeID",
+            operator: "GE", // FilterOperator.GE
+            value1: 4,
+          }),
+          new Filter({
+            path: "CustomerID",
+            operator: "Contains", // FilterOperator.Contains
+            value1: "R",
+          }),
+        ];
         var oFilter = new Filter({
           path: "EmployeeID",
           operator: "GE",
@@ -95,7 +95,7 @@ sap.ui.define(
         // -> 이 때 filter() 안에는 Object 또는 Array 형태가 들어 갈 수 있음
         // oTable.getBinding('rows').filter() => 이렇게 하면 필터 초기화
 
-        oTable.getBinding("rows").filter(oFilter);
+        oTable.getBinding("rows").filter(aFilters);
       },
       onSearch: function () {
         var oTable = this.byId("idProductsTable");
@@ -123,12 +123,12 @@ sap.ui.define(
       onSelectionChange: function (oEvent) {
         var sPath = oEvent.getParameters().listItem.getBindingContextPath();
         var oModel = this.getView().getModel();
-        var oParam = oModel.getProperty(sPath);
+        var oItem = oModel.getProperty(sPath);
 
         var oRouter = this.getOwnerComponent().getRouter();
         // oRouter.navTo(/* 라우트 객체 이름 */);
         oRouter.navTo("RouteDetail", {
-          paramOrder: oParam.OrderID,
+          paramOrder: oItem.OrderID,
           // param2 : oParam.OrderID
         });
         // OdataModel.getProperty(경로) 해서 해당 Row의 전체 데이터 가져오기
@@ -139,7 +139,6 @@ sap.ui.define(
 
         // <테스트 방법>
         // Detail 라우터의 URL에 OrderID 값이 잘 들어오는지 확인
-       
       },
     });
   }

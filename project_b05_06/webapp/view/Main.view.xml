@@ -41,14 +41,7 @@
 			</f:DynamicPageHeader>
 		</f:header>
 		<f:content>
-			<Table id="idProductsTable" 
-			sticky="HeaderToolbar,ColumnHeaders" 
-			inset="false" 
-			mode="SingleSelectMaster"
-			items="{/Orders}"
-			selectionChange="onSelectionChange" 
-			class="sapFDynamicPageAlignContent" 
-			width="auto">
+			<Table id="idProductsTable" sticky="HeaderToolbar,ColumnHeaders" inset="false" mode="SingleSelectMaster" items="{/Orders}" selectionChange="onSelectionChange" class="sapFDynamicPageAlignContent" width="auto">
 				<headerToolbar>
 					<Toolbar>
 						<Title text="Products" level="H2"/>
