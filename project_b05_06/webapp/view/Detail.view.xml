@@ -1,10 +1,42 @@
 <mvc:View controllerName="projectb0506.controller.Detail"
 	xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-	xmlns="sap.m"
-	xmlns:f="sap.f"
-	xmlns:layout="sap.ui.layout">
-	<Page title="Detail Page"
-            showNavButton="true"
-            navButtonPress="onNavMain" >
-        </Page>
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns="sap.m">
+	<Page title="Detail Page" showNavButton="true" navButtonPress="onNavMain">
+		<VBox class="sapUiSmallMargin">
+			<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup" editable="false" layout="ColumnLayout" title="OrderID : {OrderID}">
+				<f:content>
+					<Label text="OrderID" />
+					<Text text="{OrderID}" />
+					<Label text="CustomerID." />
+					<Text text="{CustomerID}" />
+					<Label text="EmployeeID" />
+					<Text text="{EmployeeID}" />
+					<Label text="OrderDate" />
+					<Text text="{path : 'OrderDate', formatter : '.formatter.fnDateString' }" />
+					<Label text="RequiredDate" />
+					<Text text="{path : 'RequiredDate', formatter : '.formatter.fnDateString' }" />
+					<Label text="ShippedDate" />
+					<Text text="{path : 'ShippedDate', formatter : '.formatter.fnDateString' }" />
+					<Label text="ShipVia" />
+					<Text text="{ShipVia}" />
+					<Label text="Freight" />
+					<Text text="{Freight}" />
+					<Label text="ShipName" />
+					<Text text="{ShipName}" />
+					<Label text="ShipAddress" />
+					<Text text="{ShipAddress}" />
+					<Label text="ShipCity" />
+					<Text text="{ShipCity}" />
+					<Label text="ShipRegion" />
+					<Text text="{ShipRegion}" />
+					<Label text="ShipPostalCode" />
+					<Text text="{ShipPostalCode}" />
+					<Label text="ShipCountry" />
+					<Text text="{ShipCountry}" />
+				</f:content>
+			</f:SimpleForm>
+		</VBox>
+	</Page>
 </mvc:View>
