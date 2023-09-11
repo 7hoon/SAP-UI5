@@ -99,8 +99,9 @@ sap.ui.define(
       },
       onSearch: function () {
         var oTable = this.byId("idProductsTable");
+        var oInput = this.byId("idInput");
         var sValue = this.byId("idInput").getValue();
-
+     
         if (sValue) {
           var oFilter = new Filter({
             path: "OrderID",
@@ -110,6 +111,14 @@ sap.ui.define(
         }
 
         oTable.getBinding("items").filter(oFilter);
+
+        function random(number) {
+          return Math.floor(Math.random() * (number + 1));
+        };
+          const rndCol =
+            "rgb(" + random(255) + "," + random(255) + "," + random(255) + ")";
+          document.body.style.backgroundColor = rndCol;
+        
       },
       onNavDetail: function () {
         // Detail.view.xml 화면으로 이동
