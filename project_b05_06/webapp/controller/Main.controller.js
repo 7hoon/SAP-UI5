@@ -34,10 +34,42 @@ sap.ui.define(
         // sap.ui.getCore().setModel(oModel);
       },
       onValueHelp: function () {
-        // var oDialog = this.byId("idDialog");
+        var oDialog = this.byId("idDialog");
+        if (!oDialog) {
+          this.loadFragment({
+            name: "projectb0506.view.fragment.Order",
+            type: "XML",
+          }).then(
+            function (oDialog) {
+              oDialog.open();
+            }.bind(this)
+          );
+        } else {
+          oDialog.open();
+        }
+
+        // var oDialog = sap.ui.getCore().byId("idDialog");
+        // var oModel = this.getView().getModel();
+        // // var oModel = sap.ui.getCore().getView().getModel();
+        // if (oDialog) {
+        //   oDialog.open();
+        // } else {
+        //   Fragment.load({
+        //     name: "projectb0506.view.fragment.Order",
+        //     type: "XML",
+        //     controller: this,
+        //   }).then(function (oDialog) {
+        //     oDialog.setModel(oModel);
+        //     // sap.ui.getCore().setModel(oModel);
+        //     oDialog.open();
+        //   });
+        // }
+      },
+      onValueHelp2: function () {
+        // var oDialog = this.byId("idDialog2");
         // if (!oDialog) {
         //   this.loadFragment({
-        //     name: "projectb0506.view.fragment.Order",
+        //     name: "projectb0506.view.fragment.CustomerID",
         //     type: "XML",
         //   }).then(
         //     function (oDialog) {
@@ -48,19 +80,17 @@ sap.ui.define(
         //   oDialog.open();
         // }
 
-        var oDialog = sap.ui.getCore().byId("idDialog");
+        var oDialog = sap.ui.getCore().byId("idDialog2");
         var oModel = this.getView().getModel();
-        // var oModel = sap.ui.getCore().getView().getModel();
         if (oDialog) {
           oDialog.open();
         } else {
           Fragment.load({
-            name: "projectb0506.view.fragment.Order",
+            name: "projectb0506.view.fragment.CustomerID",
             type: "XML",
             controller: this,
           }).then(function (oDialog) {
             oDialog.setModel(oModel);
-            // sap.ui.getCore().setModel(oModel);
             oDialog.open();
           });
         }
@@ -72,7 +102,9 @@ sap.ui.define(
         oDialog.close();
       },
       onBeforeOpen: function () {
-        var oTable = sap.ui.getCore().byId("idOrderTable");
+        // var oTable = sap.ui.getCore().byId("idOrderTable");
+        var oTable = this.byId("idOrderTable");
+        
         var aFilters = [
           new Filter({
             path: "EmployeeID",
@@ -99,18 +131,50 @@ sap.ui.define(
       },
       onSearch: function () {
         var oTable = this.byId("idProductsTable");
-        var oInput = this.byId("idInput");
+        // var oInput = this.byId("idInput");
         var sValue = this.byId("idInput").getValue();
+        var sValue2 = this.byId("idInput2").getValue();
      
-        if (sValue) {
-          var oFilter = new Filter({
+        // if (sValue) {
+        //   var oFilter = new Filter({
+        //     path: "OrderID",
+        //     operator: "EQ",
+        //     value1: sValue,
+        //   });
+        // }
+        
+        if (sValue){
+        var aFilters = [
+          new Filter({
             path: "OrderID",
             operator: "EQ",
             value1: sValue,
-          });
+          })
+        ];
+        }else if(sValue2){
+          var aFilters = [
+          new Filter({
+            path: "CustomerID",
+            operator: "EQ", 
+            value1: sValue2,
+          })
+        ];
+        }else if(sValue && sValue2){
+         var aFilters = [
+            new Filter({
+              path: "OrderID",
+              operator: "EQ",
+              value1: sValue,
+            }),
+            new Filter({
+              path: "CustomerID",
+              operator: "EQ",
+              value1: sValue2,
+            })
+          ]
         }
 
-        oTable.getBinding("items").filter(oFilter);
+        oTable.getBinding("items").filter(aFilters);
 
         function random(number) {
           return Math.floor(Math.random() * (number + 1));

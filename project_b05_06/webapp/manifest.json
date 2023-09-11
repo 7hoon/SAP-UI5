@@ -96,16 +96,12 @@
         {
           "name": "RouteMain",
           "pattern": ":?query:",
-          "target": [
-            "TargetMain"
-          ]
+          "target": ["TargetMain"]
         },
         {
           "name": "RouteDetail",
-          "pattern": "detail/{paramOrder}/:param2:", 
-          "target": [
-            "TargetDetail"
-          ]
+          "pattern": "detail/{paramOrder}/:param2:",
+          "target": ["TargetDetail"]
         }
       ],
       "targets": {
@@ -116,7 +112,7 @@
           "viewId": "Main",
           "viewName": "Main"
         },
-        "TargetDetail" : {
+        "TargetDetail": {
           "viewType": "XML",
           "transition": "slide",
           "clearControlAggregation": false,

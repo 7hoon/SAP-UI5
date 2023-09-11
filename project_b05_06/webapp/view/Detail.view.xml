@@ -5,7 +5,7 @@
 	xmlns="sap.m">
 	<Page title="Detail Page" showNavButton="true" navButtonPress="onNavMain">
 		<VBox class="sapUiSmallMargin">
-			<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup" editable="false" layout="ColumnLayout" title="OrderID : {OrderID}">
+			<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup" editable="false" layout="ColumnLayout" title="Order Detail( {OrderID} )">
 				<f:content>
 					<Label text="OrderID" />
 					<Text text="{OrderID}" />
@@ -14,7 +14,11 @@
 					<Label text="EmployeeID" />
 					<Text text="{EmployeeID}" />
 					<Label text="OrderDate" />
-					<Text text="{path : 'OrderDate', formatter : '.formatter.fnDateString' }" />
+					<Text text="{path : 'OrderDate',
+								 type : 'sap.ui.model.type.Date',
+								 formatOptions : {
+									pattern : 'yyyy-MM-dd'
+								 }  }" />
 					<Label text="RequiredDate" />
 					<Text text="{path : 'RequiredDate', formatter : '.formatter.fnDateString' }" />
 					<Label text="ShippedDate" />
