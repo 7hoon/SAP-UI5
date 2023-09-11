@@ -38,7 +38,7 @@ sap.ui.define(
         if (!oDialog) {
           this.loadFragment({
             name: "projectb0506.view.fragment.Order",
-            type: "XML",
+            type: "XML"
           }).then(
             function (oDialog) {
               oDialog.open();
@@ -66,34 +66,34 @@ sap.ui.define(
         // }
       },
       onValueHelp2: function () {
-        // var oDialog = this.byId("idDialog2");
-        // if (!oDialog) {
-        //   this.loadFragment({
+        var oDialog = this.byId("idDialog2");
+        if (!oDialog) {
+          this.loadFragment({
+            name: "projectb0506.view.fragment.CustomerID",
+            type: "XML"
+          }).then(
+            function (oDialog) {
+              oDialog.open();
+            }.bind(this)
+          );
+        } else {
+          oDialog.open();
+        }
+
+        // var oDialog = sap.ui.getCore().byId("idDialog2");
+        // var oModel = this.getView().getModel();
+        // if (oDialog) {
+        //   oDialog.open();
+        // } else {
+        //   Fragment.load({
         //     name: "projectb0506.view.fragment.CustomerID",
         //     type: "XML",
-        //   }).then(
-        //     function (oDialog) {
-        //       oDialog.open();
-        //     }.bind(this)
-        //   );
-        // } else {
-        //   oDialog.open();
+        //     controller: this,
+        //   }).then(function (oDialog) {
+        //     oDialog.setModel(oModel);
+        //     oDialog.open();
+        //   });
         // }
-
-        var oDialog = sap.ui.getCore().byId("idDialog2");
-        var oModel = this.getView().getModel();
-        if (oDialog) {
-          oDialog.open();
-        } else {
-          Fragment.load({
-            name: "projectb0506.view.fragment.CustomerID",
-            type: "XML",
-            controller: this,
-          }).then(function (oDialog) {
-            oDialog.setModel(oModel);
-            oDialog.open();
-          });
-        }
       },
       onClose: function (oEvent) {
         var oButton = oEvent.getSource();
@@ -117,11 +117,11 @@ sap.ui.define(
             value1: "R",
           }),
         ];
-        var oFilter = new Filter({
-          path: "EmployeeID",
-          operator: "GE",
-          value1: 4,
-        });
+        // var oFilter = new Filter({
+        //   path: "EmployeeID",
+        //   operator: "GE",
+        //   value1: 4,
+        // });
         // oTable의 rows에 바인딩된 정보를 가져와서
         // 바인딩 정보 중 filter 안에 필터 객체를 추가
         // -> 이 때 filter() 안에는 Object 또는 Array 형태가 들어 갈 수 있음
@@ -134,48 +134,49 @@ sap.ui.define(
         // var oInput = this.byId("idInput");
         var sValue = this.byId("idInput").getValue();
         var sValue2 = this.byId("idInput2").getValue();
-     
-        // if (sValue) {
-        //   var oFilter = new Filter({
-        //     path: "OrderID",
-        //     operator: "EQ",
-        //     value1: sValue,
-        //   });
-        // }
-        
+        var oDateRange = this.byId("inputDate");
+
+        var aFilters = [];
+
         if (sValue){
-        var aFilters = [
+        aFilters.push(
           new Filter({
             path: "OrderID",
             operator: "EQ",
             value1: sValue,
-          })
-        ];
+          }))
         }else if(sValue2){
-          var aFilters = [
-          new Filter({
-            path: "CustomerID",
-            operator: "EQ", 
-            value1: sValue2,
-          })
-        ];
-        }else if(sValue && sValue2){
-         var aFilters = [
-            new Filter({
-              path: "OrderID",
-              operator: "EQ",
-              value1: sValue,
-            }),
+          aFilters.push(
             new Filter({
               path: "CustomerID",
               operator: "EQ",
               value1: sValue2,
-            })
-          ]
+            }))
+        }else if(sValue && sValue2){
+          aFilters.push(
+            new Filter({
+              path: "OrderID",
+              operator: "EQ",
+              value1: sValue,
+            })),
+          aFilters.push(
+            new Filter({
+              path: "CustomerID",
+              operator: "EQ",
+              value1: sValue2
+            }))
         }
-
+        if (oDateRange.getDateValue() && oDateRange.getSecondDateValue()){
+          aFilters.push(
+            new Filter({
+              path: "OrderDate",
+              operator: "BT",
+              value1: oDateRange.getDateValue(),
+              value2: oDateRange.getSecondDateValue()
+            }));
+          }
+        // oTable.getBinding("items").filter((aFilters.length && aFilters) || undefined);
         oTable.getBinding("items").filter(aFilters);
-
         function random(number) {
           return Math.floor(Math.random() * (number + 1));
         };

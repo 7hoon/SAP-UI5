@@ -36,7 +36,7 @@
 						</fb:FilterGroupItem>
 						<fb:FilterGroupItem name="OrderDate" label="OrderDate" groupName="Group1" visibleInFilterBar="true">
 							<fb:control>
-								<DateRangeSelection displayFormat="yyyy-MM-dd"  />   <!-- From ~ To -->
+								<DateRangeSelection id="inputDate" displayFormat="yyyy-MM-dd"  />   <!-- From ~ To -->
 								<!-- valueFormat="yyyyMMdd" : 컨트롤러에서 사용하는 형태  -->
 								<!-- From ~ to 가 아니라 단일 날짜 형태면 DatePicker 사용  -->
 							</fb:control>

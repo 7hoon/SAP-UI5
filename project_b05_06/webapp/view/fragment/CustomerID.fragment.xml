@@ -3,7 +3,7 @@ xmlns:t="sap.ui.table"
 controllerName="projectb0506.controller.Main"
     xmlns="sap.m">
 
-    <Dialog id="idDialog2" title="Hello Dialog"
+    <Dialog id="idDialog2" title="Hello Dialog2"
 		resizable="true"
 		draggable="true"
         contentHeight="50%"
@@ -18,7 +18,7 @@ controllerName="projectb0506.controller.Main"
 				ariaLabelledBy="title">
 				<t:extension>
 					<OverflowToolbar style="Clear">
-						<Title id="title" text="Customers"/>
+						<Title id="title2" text="Customers"/>
 					</OverflowToolbar>
 				</t:extension>
 				<t:columns>
