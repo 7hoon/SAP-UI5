@@ -62,7 +62,7 @@ sap.ui.define(
         });
 
         oColChart.addFeed(oFeedItemValue);
-        oColChart.addfeed(oFeedItemCategory);
+        oColChart.addFeed(oFeedItemCategory);
       },
     });
   }
