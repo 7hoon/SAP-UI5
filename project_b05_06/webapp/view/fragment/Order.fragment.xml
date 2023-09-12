@@ -12,7 +12,7 @@ controllerName="projectb0506.controller.Main"
         <content>
             <t:Table id="idOrderTable"
 				rows="{/Orders}"
-				selectionMode="MultiToggle"
+				selectionMode="Single"
 				selectionBehavior="Row"
 				visibleRowCount="7"
 				paste="onPaste"

@@ -11,7 +11,7 @@ controllerName="projectb0506.controller.Main"
         <content>
             <t:Table id="idCustomerTable"
 				rows="{/Customers}"
-				selectionMode="MultiToggle"
+				selectionMode="Single"
 				selectionBehavior="Row"
 				visibleRowCount="7"
 				paste="onPaste"
