@@ -52,7 +52,7 @@ sap.ui.define(
             var oModel = new sap.ui.model.json.JSONModel(oReturn);
             this.getView().setModel(oModel, "OrdersDetails");
        
-          },
+          }.bind(this),
           error: function (oError) {},
         });
 
