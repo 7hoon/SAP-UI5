@@ -219,11 +219,14 @@ sap.ui.define(
           getSource() : 이벤트를 일으킨 객체
           getParameters() : 이벤트 관련 정보
         */
-          var sPath = oEvent.getParameters().rowContext.getPath();
-          var oModel = this.getView().getModel();
-          var oItem = oModel.getProperty(sPath);
+          // var sPath = oEvent.getParameters().rowContext.getPath();
+          // var oModel = this.getView().getModel();
+          // var oItem = oModel.getProperty(sPath);
+          // var oInput = this.byId("idInput");
+          // oInput.setValue(oItem.OrderID);
+          var sPath = oEvent.getParameters().rowContext.getObject();
           var oInput = this.byId("idInput");
-          oInput.setValue(oItem.OrderID);
+          oInput.setValue(sPath.OrderID);
 
           var oDialog = sap.ui.getCore().byId("idDialog");
           var oDialog = this.byId("idDialog");
