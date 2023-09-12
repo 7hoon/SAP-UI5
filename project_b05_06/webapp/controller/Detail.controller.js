@@ -31,27 +31,29 @@ sap.ui.define(
         // url 이 일치할때마다 실행
         // 파라미터로 받은 값들 가져오기
         var oParam = oEvent.getParameters().arguments; // paramOrder
-        var oModel = this.getView().getModel();  // OData Model
-      
+        var oModel = this.getView().getModel(); // OData Model
 
         console.log(oParam.paramOrder);
         this.getView().bindElement(`/Orders(${oParam.paramOrder})`); // ex) /Orders(10248)
         // oParam 안에는 manifest.json 에 등록된
         // RouteDetail 의 Parameter 값들이 있음
-        var sPath = oModel.createKey('/Orders',{
-            OrderID : oParam.paramOrder
+        var sPath = oModel.createKey("/Orders", {
+          OrderID: oParam.paramOrder,
         });
 
         oModel.read(sPath, {
-            urlParameters: {
-                '$expand' : 'Order_Details'
-            },
-            success: function(oReturn){ 
-                console.log(oReturn)
-                console.log(oReturn.Order_Details);  // json data
-                // JSON Data 를 JSON Model 에 넣어서 사용할 수 있다.
-            },
-            error: function(oError){}
+          urlParameters: {
+            $expand: "Order_Details",
+          },
+          success: function (oReturn) {
+            console.log(oReturn);
+            console.log(oReturn.Order_Details); // json data
+            // JSON Data 를 JSON Model 에 넣어서 사용할 수 있다.
+            var oModel = new sap.ui.model.json.JSONModel(oReturn);
+            this.getView().setModel(oModel, "OrdersDetails");
+       
+          },
+          error: function (oError) {},
         });
 
         debugger;

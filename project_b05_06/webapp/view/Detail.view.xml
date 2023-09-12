@@ -41,7 +41,9 @@
 					<Text text="{ShipCountry}" />
 				</f:content>
 			</f:SimpleForm>
-			<Table id="idOrderDetailsTable" mode="SingleSelectMaster" items="{Order_Details}" selectionChange="onSelectionChange" class="sapFDynamicPageAlignContent" width="auto">
+			<!-- <Table id="idOrderDetailsTable" items="{Order_Details}" class="sapFDynamicPageAlignContent" width="auto"> -->
+			<Table id="idOrderDetailsTable" items="{OrdersDetails>/Order_Details/results}" 
+			class="sapFDynamicPageAlignContent" width="auto">
 				<headerToolbar>
 					<Toolbar>
 						<Title text="Order_Details ( {OrderID} )" level="H2"/>
@@ -67,11 +69,11 @@
 				<items>
 					<ColumnListItem >
 						<cells>
-							<Text text="{OrderID}" />
-							<Text text="{ProductID}" />
-							<Text text="{UnitPrice}" />
-							<Text text="{Quantity}" />
-							<Text text="{Discount}" />
+							<Text text="{OrdersDetails>OrderID}" />
+							<Text text="{OrdersDetails>ProductID}" />
+							<Text text="{OrdersDetails>UnitPrice}" />
+							<Text text="{OrdersDetails>Quantity}" />
+							<Text text="{OrdersDetails>Discount}" />
 						</cells>
 					</ColumnListItem>
 				</items>
