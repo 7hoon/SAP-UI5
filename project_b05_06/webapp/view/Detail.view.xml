@@ -42,7 +42,8 @@
 				</f:content>
 			</f:SimpleForm>
 			<!-- <Table id="idOrderDetailsTable" items="{Order_Details}" class="sapFDynamicPageAlignContent" width="auto"> -->
-			<Table id="idOrderDetailsTable" items="{OrdersDetails>/Order_Details/results}" 
+			<!-- <Table id="idOrderDetailsTable" items="{OrdersDetails>/Order_Details/results}"  -->
+			<Table id="idOrderDetailsTable" items="{OrdersDetails>/results}" 
 			class="sapFDynamicPageAlignContent" width="auto">
 				<headerToolbar>
 					<Toolbar>

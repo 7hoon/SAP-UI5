@@ -49,7 +49,8 @@ sap.ui.define(
             console.log(oReturn);
             console.log(oReturn.Order_Details); // json data
             // JSON Data 를 JSON Model 에 넣어서 사용할 수 있다.
-            var oModel = new sap.ui.model.json.JSONModel(oReturn);
+            // var oModel = new sap.ui.model.json.JSONModel(oReturn);
+            var oModel = new sap.ui.model.json.JSONModel(oReturn.Order_Details);
             this.getView().setModel(oModel, "OrdersDetails");
        
           }.bind(this),

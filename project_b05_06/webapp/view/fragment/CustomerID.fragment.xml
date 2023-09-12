@@ -15,7 +15,8 @@ controllerName="projectb0506.controller.Main"
 				selectionBehavior="Row"
 				visibleRowCount="7"
 				paste="onPaste"
-				ariaLabelledBy="title">
+				ariaLabelledBy="title"
+				rowSelectionChange="OnrowSelectionChange2">
 				<t:extension>
 					<OverflowToolbar style="Clear">
 						<Title id="title2" text="Customers"/>

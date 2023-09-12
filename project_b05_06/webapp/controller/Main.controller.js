@@ -97,7 +97,7 @@ sap.ui.define(
       },
       onClose: function (oEvent) {
         var oButton = oEvent.getSource();
-        var oDialog = oButton.getParent();
+        var oDialog = oButton.getEventingParent();
 
         oDialog.close();
       },
@@ -214,6 +214,43 @@ sap.ui.define(
         // <테스트 방법>
         // Detail 라우터의 URL에 OrderID 값이 잘 들어오는지 확인
       },
+      OnrowSelectionChange1: function(oEvent){
+         /*
+          getSource() : 이벤트를 일으킨 객체
+          getParameters() : 이벤트 관련 정보
+        */
+          var sPath = oEvent.getParameters().rowContext.getPath();
+          var oModel = this.getView().getModel();
+          var oItem = oModel.getProperty(sPath);
+          var oInput = this.byId("idInput");
+          oInput.setValue(oItem.OrderID);
+
+          var oDialog = sap.ui.getCore().byId("idDialog");
+          var oDialog = this.byId("idDialog");
+          // var oButton = oEvent.getSource();
+          // var oDialog = oButton.getEventingParent();
+          
+          oDialog.close();
+      },
+      OnrowSelectionChange2: function(oEvent){
+         /*
+          getSource() : 이벤트를 일으킨 객체
+          getParameters() : 이벤트 관련 정보
+        */
+          var sPath = oEvent.getParameters().rowContext.getPath();
+          var oModel = this.getView().getModel();
+          var oItem = oModel.getProperty(sPath);
+          var oInput = this.byId("idInput2");
+          oInput.setValue(oItem.CustomerID);
+          debugger;
+          
+          var oDialog = sap.ui.getCore().byId("idDialog2");
+          var oDialog = this.byId("idDialog2");
+          // var oButton = oEvent.getSource();
+          // var oDialog = oButton.getEventingParent();
+  
+          oDialog.close();
+      }
     });
   }
 );
