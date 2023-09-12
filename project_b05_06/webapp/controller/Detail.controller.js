@@ -46,8 +46,9 @@ sap.ui.define(
             urlParameters: {
                 '$expand' : 'Order_Details'
             },
-            success: function(oReturn){
-                console.log(oReturn);  // json data
+            success: function(oReturn){ 
+                console.log(oReturn)
+                console.log(oReturn.Order_Details);  // json data
                 // JSON Data 를 JSON Model 에 넣어서 사용할 수 있다.
             },
             error: function(oError){}

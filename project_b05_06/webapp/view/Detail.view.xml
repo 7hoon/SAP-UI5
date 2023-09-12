@@ -5,7 +5,7 @@
 	xmlns="sap.m">
 	<Page title="Detail Page" showNavButton="true" navButtonPress="onNavMain">
 		<VBox class="sapUiSmallMargin">
-			<f:SimpleForm id="SimpleFormDisplayColumn_oneGroup" editable="false" layout="ColumnLayout" title="Order Detail( {OrderID} )">
+			<f:SimpleForm id="SimpleFormDisplay1" editable="false" layout="ColumnLayout" title="Order( {OrderID} )">
 				<f:content>
 					<Label text="OrderID" />
 					<Text text="{OrderID}" />
@@ -41,6 +41,41 @@
 					<Text text="{ShipCountry}" />
 				</f:content>
 			</f:SimpleForm>
+			<Table id="idOrderDetailsTable" mode="SingleSelectMaster" items="{Order_Details}" selectionChange="onSelectionChange" class="sapFDynamicPageAlignContent" width="auto">
+				<headerToolbar>
+					<Toolbar>
+						<Title text="Order_Details ( {OrderID} )" level="H2"/>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="Product" />
+					</Column>
+					<Column width="12em">
+						<Text text="ProductID" />
+					</Column>
+					<Column width="12em">
+						<Text text="UnitPrice" />
+					</Column>
+					<Column width="12em">
+						<Text text="Quantity" />
+					</Column>
+					<Column width="12em">
+						<Text text="Discount" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Text text="{OrderID}" />
+							<Text text="{ProductID}" />
+							<Text text="{UnitPrice}" />
+							<Text text="{Quantity}" />
+							<Text text="{Discount}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
 		</VBox>
 	</Page>
 </mvc:View>

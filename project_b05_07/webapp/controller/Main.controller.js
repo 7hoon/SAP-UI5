@@ -12,12 +12,12 @@ sap.ui.define([
             onInit: function () {
                 var oData = {
                         list : [
-                          {naem:'' , rate:'', cost:''},
-                          {naem:'' , rate:'', cost:''},
-                          {naem:'' , rate:'', cost:''},
-                          {naem:'' , rate:'', cost:''},
-                          {naem:'' , rate:'', cost:''},
-                          {naem:'' , rate:'', cost:''}
+                          {name:'aaa' , rate:'35', cost:'10'},
+                          {name:'bbb' , rate:'15', cost:'12'},
+                          {name:'ccc' , rate:'10', cost:'11'},
+                          {name:'ddd' , rate:'35', cost:'15'},
+                          {name:'eee' , rate:'15', cost:'10'},
+                          {name:'fff' , rate:'5', cost:'17'}
                         ],}; 
           var oModel = new JSONModel(oData);
           this.getView().setModel(oModel, "view");
