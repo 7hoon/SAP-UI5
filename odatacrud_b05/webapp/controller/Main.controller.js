@@ -28,14 +28,17 @@ sap.ui.define(
 
         var sPath = oDataModel.createKey("/MemberSet", {
         MB_ID: sValue,
+        // MB_ID: '10000001',
         }); // "/MemberSet('10000001')"  와 동일
         // 전체조회 (GET요청)
         oDataModel.read(sPath, {
+            
           success: function (oReturn) {
-            console.log(oReturn);
+
             // 읽어온 데이터를 JSONModel에 세팅 
-            oModel.setProperty("/", oReturn);
-            console.log(oModel);
+            oModel.setProperty("/", oReturn);     // 전체 데이터를 oReturn 으로 변경 
+            // oModel.getProperty("/");
+            
           },
           error: function (oError) {
             console.log("Error 발생");
