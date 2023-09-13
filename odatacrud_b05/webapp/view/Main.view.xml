@@ -4,7 +4,7 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <content>
-            <l:Grid >
+            <l:Grid class="sapUiSmallMargin">
                 <Input value="" placeholder="Member id" description="MB_ID">
                     <layoutData>
                         <l:GridData span="XL6 L2 M4 S12"/>
@@ -33,11 +33,16 @@
                 </Input>
             </l:Grid>
 
-            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}">
+            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}" >
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>
                             <Title text="MemberSet" level="H2"/>
+                            <ToolbarSpacer />
+                            <Button text="ReadEntity" type="Emphasized" press="onRead"/>
+                            <Button text="Create" type="Emphasized" press="onCreate"/>
+                            <Button text="Update" type="Emphasized" press="onUpdate"/>
+                            <Button text="Delete" type="Emphasized" press="onDelete"/>
                         </content>
                     </OverflowToolbar>
                 </headerToolbar>
