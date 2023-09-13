@@ -1,6 +1,5 @@
 sap.ui.define(
-  ["sap/ui/core/mvc/Controller",
-  "sap/ui/model/json/JSONModel"],
+  ["sap/ui/core/mvc/Controller", "sap/ui/model/json/JSONModel"],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    */
@@ -20,32 +19,44 @@ sap.ui.define(
         this.getView().setModel(new JSONModel(), "view");
       },
       onRead: function () {
-        var oModel = this.getView().getModel('view');    // JSONModel
-        var oItem = this.byId("idMemberSetTable").getSelectedContexts()[0].getObject();
-        // var oItem = this.byId("idMemberSetTable").getSelectedItem().getBindingContext().getObject();  
-        var oDataModel = this.getOwnerComponent().getModel();    // ODataModel
+        var oJSONModel = this.getView().getModel("view"); // JSONModel
+        var oItem = this.byId("idMemberSetTable")
+          .getSelectedContexts()[0]
+          .getObject();
+        // var oItem = this.byId("idMemberSetTable").getSelectedItem().getBindingContext().getObject();
+        var oDataModel = this.getOwnerComponent().getModel(); // ODataModel
         var sValue = oItem.MB_ID;
 
         var sPath = oDataModel.createKey("/MemberSet", {
-        MB_ID: sValue,
-        // MB_ID: '10000001',
+          MB_ID: sValue,
+          // MB_ID: '10000001',
         }); // "/MemberSet('10000001')"  와 동일
         // 전체조회 (GET요청)
+        debugger;
         oDataModel.read(sPath, {
-            
           success: function (oReturn) {
-
-            // 읽어온 데이터를 JSONModel에 세팅 
-            oModel.setProperty("/", oReturn);     // 전체 데이터를 oReturn 으로 변경 
-            // oModel.getProperty("/");
-            
+            // 읽어온 데이터를 JSONModel에 세팅
+            oJSONModel.setProperty("/", oReturn); // 전체 데이터를 oReturn 으로 변경
+            // oJSONModel.getProperty("/");
           },
           error: function (oError) {
             console.log("Error 발생");
           },
         });
       },
-      onCreate: function () {},
+      onCreate: function () {
+        var oDataModel = this.getOwnerComponent().getModel();
+        var oJSONModel = this.getView().getModel("view");
+        var oBody = oJSONModel.getData();  // 생성할 데이터 구성
+        // var oBody = oJSONModel.getProperty("/"); // 생성할 데이터 구성
+        debugger;
+        oDataModel.create("/MemberSet", oBody, {
+          success: function (oReturn) {
+            debugger;
+          },
+          error: function (oError) {},
+        });
+      },
       onUpdate: function () {},
       onDelete: function () {},
     });
