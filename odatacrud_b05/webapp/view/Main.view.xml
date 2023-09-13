@@ -1,0 +1,75 @@
+<mvc:View controllerName="odatacrudb05.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:l="sap.ui.layout"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <l:Grid >
+                <Input value="" placeholder="Member id" description="MB_ID">
+                    <layoutData>
+                        <l:GridData span="XL6 L2 M4 S12"/>
+                        <!-- 전체 길이는 12칸, XL6 이면 전체화면일때 6칸을 차지, S12 면 작은화면에서 12칸을 차지 -->
+                    </layoutData>
+                </Input>
+                <Input value="" placeholder="Member Name" description="MB_NM">
+                    <layoutData>
+                        <l:GridData span="XL6 L6 M4 S12"/>
+                    </layoutData>
+                </Input>
+                <Input value="" placeholder="Tel." description="TELNO">
+                    <layoutData>
+                        <l:GridData span="XL6 L2 M4 S12"/>
+                    </layoutData>
+                </Input>
+                <Input value="" placeholder="Email" description="EMAIL">
+                    <layoutData>
+                        <l:GridData span="XL6 L2 M4 S12"/>
+                    </layoutData>
+                </Input>
+                <Input value="" placeholder="Member State" description="MB_ST">
+                    <layoutData>
+                        <l:GridData span="XL6 L2 M4 S12"/>
+                    </layoutData>
+                </Input>
+            </l:Grid>
+
+            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}">
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="MemberSet" level="H2"/>
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column width="12em">
+                        <Text text="Member id" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Member Name" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Tel." />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Email" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Member State" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem vAlign="Middle">
+                        <cells>
+                            <Text text="{MB_ID}" />
+                            <Text text="{MB_NM}" />
+                            <Text text="{TELNO}" />
+                            <Text text="{EMAIL}" />
+                            <Text text="{MB_ST}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

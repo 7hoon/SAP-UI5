@@ -11,7 +11,8 @@
                         'legendGroup' : { layout : {position : 'left'} },
                         'plotArea' : {
                             drawingEffect : 'glossy',
-                            colorPalette : ['#5CD1E5','#6B66FF','#FAED7D']
+                            colorPalette : ['#5CD1E5','#6B66FF','#FAED7D'],
+                            dataLabel : { visible : true }
                         }
                       }">
 
