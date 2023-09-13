@@ -33,7 +33,7 @@
                 </Input>
             </l:Grid>
 
-            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}" >
+            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}" mode="SingleSelectMaster" selectionChange="_onSelectionChange" >
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>

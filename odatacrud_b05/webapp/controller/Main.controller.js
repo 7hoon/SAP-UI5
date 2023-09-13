@@ -17,7 +17,24 @@ sap.ui.define([
                 // remove = DELETE 요청 
             },
             onRead: function () {
-
+                
+                var oEvent = this._onSelectionChange();
+                var oDataModel = this.getOwnerComponent().getModel();
+                var sPath = oDataModel.createKey("/MemberSet", {          
+                    MB_ID : oEvent.MB_ID
+                });     // "/MemberSet('10000001')"  와 동일 
+                var oModel = this.getView().getModel();
+                debugger;
+                // 전체조회 (GET요청)
+                oDataModel.read(sPath,{
+                    success: function(oReturn) {
+                        // var test = oModel.getObject;
+                        debugger;
+                    },
+                    error: function(oError) {
+                        console.log('Error 발생');
+                    }
+                });
             },
             onCreate: function () {
 
@@ -27,6 +44,10 @@ sap.ui.define([
             },
             onDelete: function () {
 
+            },
+            _onSelectionChange: function (oEvent) {
+                var sPath = oEvent.getParameters().rowContext.getObject();
+                return oEvent;     
             }
         });
     });
