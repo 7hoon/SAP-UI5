@@ -1,53 +1,50 @@
-sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-],
-    /**
-     * @param {typeof sap.ui.core.mvc.Controller} Controller
-     */
-    function (Controller) {
-        "use strict";
+sap.ui.define(
+  ["sap/ui/core/mvc/Controller",
+  "sap/ui/model/json/JSONModel"],
+  /**
+   * @param {typeof sap.ui.core.mvc.Controller} Controller
+   */
+  function (Controller, JSONModel) {
+    "use strict";
 
-        return Controller.extend("odatacrudb05.controller.Main", {
-            onInit: function () {
-                var oModel = this.getOwnerComponent().getModel();             // manifest 에 등록된 component 단의 기본 데이터를 가져옴 
-                
-                // read   = GET 요청
-                // create = POST 요청
-                // update = PUT 요청
-                // remove = DELETE 요청 
-            },
-            onRead: function () {
-                
-                var oEvent = this._onSelectionChange();
-                var oDataModel = this.getOwnerComponent().getModel();
-                var sPath = oDataModel.createKey("/MemberSet", {          
-                    MB_ID : oEvent.MB_ID
-                });     // "/MemberSet('10000001')"  와 동일 
-                var oModel = this.getView().getModel();
-                debugger;
-                // 전체조회 (GET요청)
-                oDataModel.read(sPath,{
-                    success: function(oReturn) {
-                        // var test = oModel.getObject;
-                        debugger;
-                    },
-                    error: function(oError) {
-                        console.log('Error 발생');
-                    }
-                });
-            },
-            onCreate: function () {
+    return Controller.extend("odatacrudb05.controller.Main", {
+      onInit: function () {
+        var oModel = this.getOwnerComponent().getModel(); // manifest 에 등록된 component 단의 기본 데이터를 가져옴
 
-            },
-            onUpdate: function () {
+        // read   = GET 요청
+        // create = POST 요청
+        // update = PUT 요청
+        // remove = DELETE 요청
 
-            },
-            onDelete: function () {
+        // JSONModel 이름 : view
+        this.getView().setModel(new JSONModel(), "view");
+      },
+      onRead: function () {
+        var oModel = this.getView().getModel('view');    // JSONModel
+        var oItem = this.byId("idMemberSetTable").getSelectedContexts()[0].getObject();
+        // var oItem = this.byId("idMemberSetTable").getSelectedItem().getBindingContext().getObject();  
+        var oDataModel = this.getOwnerComponent().getModel();    // ODataModel
+        var sValue = oItem.MB_ID;
 
-            },
-            _onSelectionChange: function (oEvent) {
-                var sPath = oEvent.getParameters().rowContext.getObject();
-                return oEvent;     
-            }
+        var sPath = oDataModel.createKey("/MemberSet", {
+        MB_ID: sValue,
+        }); // "/MemberSet('10000001')"  와 동일
+        // 전체조회 (GET요청)
+        oDataModel.read(sPath, {
+          success: function (oReturn) {
+            console.log(oReturn);
+            // 읽어온 데이터를 JSONModel에 세팅 
+            oModel.setProperty("/", oReturn);
+            console.log(oModel);
+          },
+          error: function (oError) {
+            console.log("Error 발생");
+          },
         });
+      },
+      onCreate: function () {},
+      onUpdate: function () {},
+      onDelete: function () {},
     });
+  }
+);

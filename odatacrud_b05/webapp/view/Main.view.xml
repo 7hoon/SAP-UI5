@@ -5,35 +5,35 @@
     <Page id="page" title="{i18n>title}">
         <content>
             <l:Grid class="sapUiSmallMargin">
-                <Input value="" placeholder="Member id" description="MB_ID">
+                <Input value="{view>/MB_ID}" placeholder="Member id" description="MB_ID">
                     <layoutData>
                         <l:GridData span="XL6 L2 M4 S12"/>
                         <!-- 전체 길이는 12칸, XL6 이면 전체화면일때 6칸을 차지, S12 면 작은화면에서 12칸을 차지 -->
                     </layoutData>
                 </Input>
-                <Input value="" placeholder="Member Name" description="MB_NM">
+                <Input value="{view>/MB_NM}" placeholder="Member Name" description="MB_NM">
                     <layoutData>
                         <l:GridData span="XL6 L6 M4 S12"/>
                     </layoutData>
                 </Input>
-                <Input value="" placeholder="Tel." description="TELNO">
+                <Input value="{view>/TELNO}" placeholder="Tel." description="TELNO">
                     <layoutData>
                         <l:GridData span="XL6 L2 M4 S12"/>
                     </layoutData>
                 </Input>
-                <Input value="" placeholder="Email" description="EMAIL">
+                <Input value="{view>/EMAIL}" placeholder="Email" description="EMAIL">
                     <layoutData>
                         <l:GridData span="XL6 L2 M4 S12"/>
                     </layoutData>
                 </Input>
-                <Input value="" placeholder="Member State" description="MB_ST">
+                <Input value="{view>/MB_ST}" placeholder="Member State" description="MB_ST">
                     <layoutData>
                         <l:GridData span="XL6 L2 M4 S12"/>
                     </layoutData>
                 </Input>
             </l:Grid>
 
-            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}" mode="SingleSelectMaster" selectionChange="_onSelectionChange" >
+            <Table id="idMemberSetTable" inset="false" items="{/MemberSet}" mode="SingleSelectMaster" >
                 <headerToolbar>
                     <OverflowToolbar>
                         <content>
