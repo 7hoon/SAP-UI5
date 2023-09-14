@@ -10,6 +10,10 @@
 				<heading>
 					<m:Title text="Viz Frame" wrapping="false"/>
 				</heading>
+
+				<expandedContent>
+					<m:Text text="Order Detail View Details"/>
+				</expandedContent>
 			</ObjectPageDynamicHeaderTitle>
 		</headerTitle>
 
