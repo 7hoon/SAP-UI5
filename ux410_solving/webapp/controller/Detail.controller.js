@@ -28,8 +28,8 @@ sap.ui.define(
               var oModel = new sap.ui.model.json.JSONModel(oReturn);
               this.getView().setModel(oModel, "OrdersDetails");
             }.bind(this),
-            error: function (oError) {},
-          });
+            error: function (oError) {}, 
+          });       // Odata모델을 Json 모델로 다루는법
         }
       });
     }
