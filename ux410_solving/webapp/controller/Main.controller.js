@@ -51,6 +51,15 @@ sap.ui.define(
         }
         
       },
+      OnselectData: function(oEvent) {
+        var sPath = oEvent.getParameters().data[0].data;
+        var oRouter = this.getOwnerComponent().getRouter();
+
+        oRouter.navTo("RouteDetail", {
+          paramOrder: sPath.OrderID,
+          param2 : sPath.ProductID
+        });
+      }
     });
   }
 );

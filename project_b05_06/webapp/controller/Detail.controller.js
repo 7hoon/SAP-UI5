@@ -40,7 +40,7 @@ sap.ui.define(
         var sPath = oModel.createKey("/Orders", {
           OrderID: oParam.paramOrder,
         });
-
+        debugger;
         oModel.read(sPath, {
           urlParameters: {
             $expand: "Order_Details",
