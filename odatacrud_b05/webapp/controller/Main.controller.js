@@ -62,17 +62,6 @@ sap.ui.define(
           },
           error: function (oError) {},
         });
-        // for (let i = 30; i < 41; i++) {
-        //     var oInput = this.byId("idInput");
-        //     oInput.setValue(i);
-        //     var oDataModel = this.getOwnerComponent().getModel();
-        //     var oJSONModel = this.getView().getModel("view");
-        //     var oBody = oJSONModel.getData();
-        //     oDataModel.create("/MemberSet", oBody, {success: function (oReturn) {
-        //             sap.m.MessageToast.show("데이터 생성 완료");
-        //           }
-        //       });
-        // }
       },
 
       // PUT : /EntitySetName('keyValue') + Body
