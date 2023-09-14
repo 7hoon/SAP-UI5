@@ -17,7 +17,7 @@ sap.ui.define(
           var oParam = oEvent.getParameters().arguments; // paramOrder
           var oModel = this.getView().getModel(); // OData Model
 
-        // this.getView().bindElement(`/Order_Details(OrderID=${oParam.paramOrder},ProductID=${oParam.param2})`); // ex) /Orders(10248)
+          // this.getView().bindElemenrt(`/Order_Details(OrderID=${oParam.paramOder},ProductID=${oParam.param2})`); // ex) /Order_Details(OrderID=10248,ProductID=11)
          
           var sPath = oModel.createKey("/Order_Details", {
             'OrderID' : oParam.paramOrder,
