@@ -28,7 +28,7 @@
                         </fb:FilterGroupItem>
                         <fb:FilterGroupItem groupName="Group1" name="Type" label="Type" visibleInFilterBar="true">
                             <fb:control>
-                                <ComboBox id="idComboBox2" items= "{typeList>/typeList}" required="true">
+                                <ComboBox id="idComboBox2" items= "{typeList>/typeList}" required="true" value="bar">
                                     <core:Item key="{typeList>type}" text="{typeList>type}" />
                                 </ComboBox>
                             </fb:control>
@@ -43,7 +43,7 @@
                         'title' : {'visible' : false },
                         'plotArea' : {
                             dataLabel : { visible : true }
-                        }}" selectData="OnselectData">
+                        }}" selectData="On">
 
                 <viz:dataset>
                     <viz.data:FlattenedDataset id="idFlattenedDataset" data="{/Order_Details}">

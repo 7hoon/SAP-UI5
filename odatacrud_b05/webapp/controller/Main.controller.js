@@ -77,7 +77,7 @@ sap.ui.define(
         //   EMAIL: oBody.EMAIL,
         //   MB_ST: 'A'
         // };
-
+        
         oDataModel.update(`/MemberSet('${oBody.MB_ID}')`, oBody, {
           success: function (oReturn) {
             sap.m.MessageToast.show("데이터 변경 완료");

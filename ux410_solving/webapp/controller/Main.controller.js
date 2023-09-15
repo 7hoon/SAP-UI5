@@ -20,12 +20,15 @@ sap.ui.define(
             { type: "donut" },
           ],
         };
+        var oComboBox2 = this.byId("idComboBox2").setSelectedKey("bar");
         var oModel = new JSONModel(oDatas);
         this.getView().setModel(oModel, "typeList");
+        
       },
       onSearch: function () {
         var oColChart = this.getView().byId("idChart");
         var oComboBox2 = this.byId("idComboBox2");
+        var sValue = oComboBox2.getValue();
         var oSelectComboBox2 = oComboBox2.getSelectedKey();
         var oComboBox = this.byId("idComboBox").getSelectedKey();
         if (oComboBox) {
@@ -38,10 +41,7 @@ sap.ui.define(
         var oFlattenedDataset = this.byId("idFlattenedDataset");
 
         if (
-          oSelectComboBox2 == "bar" ||
-          oSelectComboBox2 == "column" ||
-          oSelectComboBox2 == "line" ||
-          oSelectComboBox2 == "donut"
+          oSelectComboBox2 && sValue
         ) {
           oComboBox2.setValueState("None");
           oFlattenedDataset.getBinding("data").filter(oFilter);
@@ -52,12 +52,12 @@ sap.ui.define(
         
       },
       OnselectData: function(oEvent) {
-        var sPath = oEvent.getParameters().data[0].data;
+        var oOrderDetails = oEvent.getParameters().data[0].data;
         var oRouter = this.getOwnerComponent().getRouter();
 
         oRouter.navTo("RouteDetail", {
-          paramOrder: sPath.OrderID,
-          param2 : sPath.ProductID
+          paramOrder: oOrderDetails.OrderID,
+          param2 : oOrderDetails.ProductID
         });
       }
     });
