@@ -1,0 +1,75 @@
+<mvc:View controllerName="exam.exprogramb05.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:core="sap.ui.core"
+    xmlns="sap.m">
+    <Page id="page" title="항공사 및 항공편 조회">
+
+        <HBox class="sapUiSmallMarginTop" width="auto">
+
+            <VBox >
+                <Label text="Currency Code" />
+                <ComboBox id="idComboBox" items= "{currencyList>/currencyList}" width="250px">
+                    <core:ListItem key="{currencyList>code}" text="{currencyList>code}" />
+                </ComboBox>
+                <Label text="Carrier Name" />
+                <Input width="250px" id="idInput" />
+                <Button width="250px" text="Search" type="Emphasized" press="onSearch"/>
+            </VBox>
+
+            <Table id="idTable" 
+            mode="SingleSelectMaster" 
+            items="{path : '/carrierSet', parameters: {'expand' : 'to_Item'}}" 
+            selectionChange="onSelectionChange" 
+            width="auto" 
+            fixedLayout="false" 
+            class="sapUiSmallMarginBegin">
+
+                <headerToolbar>
+                    <OverflowToolbar>
+                        <content>
+                            <Title text="Carrier List" level="H2"/>
+                            <ToolbarSpacer />
+                            <Button text="항공편 예약 상세" press="onNavto"/>
+
+                        </content>
+                    </OverflowToolbar>
+                </headerToolbar>
+
+                <columns>
+                    <Column width="12em">
+                        <Text id="txtBold" text="Carrid"/>
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Carrname" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Currcode" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Url" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Length" />
+                    </Column>
+                    <Column width="12em">
+                        <Text text="Detail" />
+                    </Column>
+                </columns>
+
+                <items>
+                    <ColumnListItem >
+                        <cells>
+                            <Text id="txtBold2" text="{path: 'Carrid'}" class="bold" />
+                            <Text text="{Carrname}" />
+                            <Text text="{Currcode}" />
+                            <Text text="{Url}" />
+                            <Text text="{= ${to_Item}.length }" />
+                            <Button text="예약 현황" enabled="{= ${to_Item}.length > 0 ? true : false }" press="onDialog" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+
+            </Table>
+        </HBox>
+    </Page>
+</mvc:View>
