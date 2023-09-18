@@ -6,8 +6,9 @@
         <content>
         <t:Table id="idTable" 
             rows="{toFlight>/to_Flight/results}" 
-            selectionMode="Single" 
-            selectionBehavior="RowOnly" 
+            selectionMode="None"
+            growing="true"
+            growingThreshold="10"
             ariaLabelledBy="title">
 
                 <t:extension>
@@ -16,7 +17,7 @@
                     </OverflowToolbar>
                 </t:extension>
 
-                <t:columns>
+                <t:columns> 
                     <t:Column>
                         <Label text="CARRID" />
                         <t:template>
@@ -32,10 +33,15 @@
                     <t:Column>
                         <Label text="FLDATE" />
                         <t:template>
+                        <!-- path : 'toFlight>FLDATE',
+									formatter : '.formatter.fnDateString' -->
                             <Text text="{
-									path : 'toFlight>FLDATE',
-									formatter : '.formatter.fnDateString'
-                                    }" />
+                                    path : 'toFlight>FLDATE',
+                                    type : 'sap.ui.model.type.Date',
+                                    formatOptions : {
+                                        pattern : 'yyyy-MM-dd'
+                                    }
+                                    }" wrapping="false" />
                         </t:template>
                     </t:Column>
                     <t:Column>

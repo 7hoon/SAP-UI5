@@ -38,6 +38,7 @@ sap.ui.define(
           success: function (oReturn) {
             var oModel = new sap.ui.model.json.JSONModel(oReturn);
             this.getView().setModel(oModel, "toFlight");
+            // this.getView().setModel(oReturn.to_Flight.results);
           }.bind(this),
           error: function (oError) {}
         });

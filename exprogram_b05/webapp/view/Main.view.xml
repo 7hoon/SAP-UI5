@@ -6,16 +6,16 @@
 
         <HBox class="sapUiSmallMarginTop" width="auto">
 
-            <VBox >
+            <VBox width="20%" class="sapUiSmallMarginTop">
                 <Label text="Currency Code" />
-                <ComboBox id="idComboBox" items= "{currencyList>/currencyList}" width="250px">
+                <ComboBox id="idComboBox" items= "{currencyList>/currencyList}" width="100%">
                     <core:ListItem key="{currencyList>code}" text="{currencyList>code}" />
                 </ComboBox>
                 <Label text="Carrier Name" />
-                <Input width="250px" id="idInput" />
-                <Button width="250px" text="Search" type="Emphasized" press="onSearch"/>
+                <Input id="idInput" />
+                <Button text="Search" type="Emphasized" press="onSearch" width="100%"/>
             </VBox>
-
+            <VBox width="80%">
             <Table id="idTable" 
             mode="SingleSelectMaster" 
             items="{path : '/carrierSet', parameters: {'expand' : 'to_Item'}}" 
@@ -68,8 +68,8 @@
                         </cells>
                     </ColumnListItem>
                 </items>
-
             </Table>
+            </VBox>
         </HBox>
     </Page>
 </mvc:View>

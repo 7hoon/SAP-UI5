@@ -51,6 +51,7 @@ sap.ui.define(
       // 예약 현황 버튼 구현
       onDialog: function (oEvent) {
         var oParam = oEvent.getParameter("id").substr(73, 3);
+        // oEvent.getSource().getBindingContext().getPath();   이렇게 하면 버튼값의 path 값을 구할 수 있다.
         var oTable = this.byId("idTable");
         var sPath = oTable.getItems()[oParam].getBindingContext().getPath();
         var oModel = this.getView().getModel();
@@ -91,6 +92,7 @@ sap.ui.define(
       // 항공편 예약 상세 버튼 구현
       onNavto: function () {
         var oTable = this.byId("idTable");
+        // oTable.getSelectedItem().getBindingContext().getObject()
         var oData = oTable.getSelectedContexts()[0].getProperty();
         var oRouter = this.getOwnerComponent().getRouter();
 
