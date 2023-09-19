@@ -3,7 +3,7 @@
     xmlns:t="sap.ui.table"
     xmlns="sap.uxap"
     xmlns:m="sap.m">
-    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false">
+    <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" useIconTabBar="true">
         <headerTitle>
             <ObjectPageHeader objectTitle="Section sample">
             </ObjectPageHeader>
