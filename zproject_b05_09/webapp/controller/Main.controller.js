@@ -10,7 +10,7 @@ sap.ui.define([
 
         return Controller.extend("zprojectb0509.controller.Main", {
             onInit: function () {
-
+                this.byId('idImage').setSrc(_rootPath + '/image/images.jpg');
             },
             onValueHelp: function () {
                 var oDialog = sap.ui.getCore().byId("idDialog");

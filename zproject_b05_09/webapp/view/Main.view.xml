@@ -5,11 +5,14 @@
     xmlns:m="sap.m">
     <ObjectPageLayout id="ObjectPageLayout" upperCaseAnchorBar="false" useIconTabBar="true">
         <headerTitle>
-            <ObjectPageHeader objectTitle="Section sample">
+            <ObjectPageHeader objectTitle="Read App">
             </ObjectPageHeader>
         </headerTitle>
 
         <headerContent>
+        <m:Image src="https://photo.coolenjoy.co.kr/data/editor/1912/thumb-Bimg_e88016b1c8dee37b9fc00685c75d9fc6_ii1h.jpg" width="300px" />
+         <m:Image id="idImage" width="200px" />
+          <!-- <m:Image src="../image/images.jpg" width="200px" /> -->
             <m:Input width="20%"
 			showValueHelp="true" valueHelpRequest="onValueHelp"/>
         </headerContent>
