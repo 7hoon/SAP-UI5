@@ -1,7 +1,94 @@
 <mvc:View controllerName="zprojectzbbfi010.controller.Main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:core="sap.ui.core"
     xmlns="sap.m">
-    <Page id="page" title="{i18n>title}">
-        <content />
+    <Page id="page" title="G/L 계정 조회">
+        <HBox class="sapUiSmallMarginTop" width="auto">
+            <VBox width="20%" class="sapUiSmallMarginTop">
+                <Label text="계정과목" />
+                <Input id="idInput4" />
+                <Label text="계정그룹" />
+                <Input id="idInput1" placeholder="계정그룹을 입력하세요"
+                    showSuggestion="true"
+                    showValueHelp="true"
+                    valueHelpRequest=".onValueHelpRequest"
+                    suggestionItems="{/ZBB_FIT010Set}">
+                    <suggestionItems>
+                        <core:Item text="{Accclass}" />
+                    </suggestionItems>
+                </Input>
+                <Label text="계정구분" />
+                <Input id="idInput2" />
+                <Label text="계정구분상세" />
+                <Input id="idInput3" />
+                <Button text="Search" type="Emphasized" press="onSearch" width="100%" />
+            </VBox>
+            <VBox width="80%">
+                <Table id="idTable" mode="SingleSelectMaster" items="{/ZBB_FIT010Set}"
+                    selectionChange="onSelectionChange" width="auto" fixedLayout="false"
+                    class="sapUiSmallMarginBegin">
+
+                    <headerToolbar>
+                        <OverflowToolbar>
+                            <content>
+                                <Title text="G/L 계정" level="H2" />
+                                <ToolbarSpacer />
+                                <Button text="수정" press="onNavto" />
+                            </content>
+                        </OverflowToolbar>
+                    </headerToolbar>
+
+                    <columns>
+                        <Column width="12em">
+                            <Text id="txtBold" text="Cmpcd" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="Accid" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="Acctdes" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="Accclass" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="Accclassnm" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="Accclassnm2" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="CreateDt" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="CreateTm" />
+                        </Column>
+                        <Column width="12em">
+                            <Text text="Cuser" />
+                        </Column>
+                    </columns>
+
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text id="txtBold2" text="{path: 'Cmpcd'}" class="bold" />
+                                <Text text="{Accid}" />
+                                <Text text="{Acctdes}" />
+                                <Text text="{Accclass}" />
+                                <Text text="{Accclassnm}" />
+                                <Text text="{Accclassnm2}" />
+                                <Text
+                                    text="{path: 'CreateDt',
+				                        type: 'sap.ui.model.type.Date'}" />
+                                <Text
+                                    text="{path: 'CreateTm',
+                                    type: 'sap.ui.model.odata.type.Time'}" />
+                                <Text text="{Cuser}" />
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </HBox>
     </Page>
 </mvc:View>
