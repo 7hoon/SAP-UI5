@@ -1,20 +1,22 @@
 <mvc:View controllerName="zbbprojectfi010.controller.Main"
-  xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns:core="sap.ui.core"
     xmlns="sap.m">
     <Page id="page" title="부서 조회">
         <HBox class="sapUiSmallMarginTop" width="auto">
             <VBox width="20%" class="sapUiSmallMarginTop">
                 <Label text="부서ID" />
-                <Input id="idInput1" placeholder="값을 입력하세요" />
+                <Input id="idInput1" value="{view>/Dptid}" placeholder="department id"/>
+
                 <Label text="부서이름" />
-                <Input id="idInput2" placeholder="값을 입력하세요" />
-                <Button text="Search" type="Emphasized" press="onSearch" width="100%" />
+                <Input id="idInput2" value="{view>/Dptnm}" placeholder="department Name"/>
+                <Button text="Search" type="Emphasized" press="onSearch" width="100%"/>
+                <Button text="Create" type="Emphasized" press="onCreate" width="100%"/>
+                <Button text="Update" type="Emphasized" press="onUpdate" width="100%"/>
+                <Button text="Delete" type="Emphasized" press="onDelete" width="100%"/>
             </VBox>
             <VBox width="80%">
-                <Table id="idTable" mode="SingleSelectMaster" items="{/ZBB_FIT060Set}"
-                    selectionChange="onSelectionChange" width="auto" fixedLayout="false"
-                    class="sapUiSmallMarginBegin">
+                <Table id="idTable" mode="SingleSelectMaster" items="{/ZBB_FIT060Set}" selectionChange="onSelectionChange" width="auto" fixedLayout="false" class="sapUiSmallMarginBegin">
 
                     <headerToolbar>
                         <OverflowToolbar>
@@ -41,7 +43,7 @@
                             <cells>
                                 <Text id="txtBold2" text="{path: 'Dptid'}" class="bold" />
                                 <Text text="{Dptnm}" />
-                                <Text text="{Delect}" />
+                                <Text text="{Delet}" />
                             </cells>
                         </ColumnListItem>
                     </items>

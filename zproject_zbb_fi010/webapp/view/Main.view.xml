@@ -12,7 +12,7 @@
                     showSuggestion="true"
                     showValueHelp="true"
                     valueHelpRequest=".onValueHelpRequest"
-                    suggestionItems="{/ZBB_FIT010Set}">
+                    suggestionItems="{main>/list}">
                     <suggestionItems>
                         <core:Item text="{Accclass}" />
                     </suggestionItems>

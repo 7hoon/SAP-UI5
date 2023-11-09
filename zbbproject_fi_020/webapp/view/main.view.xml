@@ -1,0 +1,90 @@
+<mvc:View controllerName="zbbprojectfi020.controller.main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:core="sap.ui.core"
+xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:layout="sap.ui.layout" height="100%">
+    <f:DynamicPage id="dynamicPageId" headerExpanded="false" toggleHeaderOnTitleClick="true">
+        <!-- DynamicPage Title -->
+        <f:title >
+            <f:DynamicPageTitle >
+
+                <f:heading>
+                    <Title text="SAPANDA"/>
+                </f:heading>
+
+                <f:expandedContent>
+                    <Label text="확장 sub title"/>
+                </f:expandedContent>
+
+                <f:snappedTitleOnMobile>
+                    <Title text="This is a subheading"/>
+                </f:snappedTitleOnMobile>
+
+                <f:content>
+                    <OverflowToolbar>
+                        <GenericTag text="" status="Error" press="onPressOpenPopover" design="StatusIconHidden">
+                            <ObjectNumber number="2" unit="M" emphasized="false" state="Error"/>
+                        </GenericTag>
+                    </OverflowToolbar>
+                </f:content>
+
+            </f:DynamicPageTitle>
+        </f:title>
+        <!-- DynamicPage Header -->
+        <f:header>
+            <f:DynamicPageHeader pinnable="false">
+                <layout:HorizontalLayout allowWrapping="true">
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="Location"/>
+                        <ObjectStatus text="Republic of Korea" state="Success" />
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout class="sapUiMediumMarginEnd">
+                        <ObjectAttribute title="capital"/>
+                        <ObjectStatus text="29 billion" state="Success" />
+                    </layout:VerticalLayout>
+                    <layout:VerticalLayout>
+                        <ObjectAttribute title="Business Areas"/>
+                        <ObjectStatus text="Figure" state="Success" />
+                    </layout:VerticalLayout>
+                </layout:HorizontalLayout>
+            </f:DynamicPageHeader>
+        </f:header>
+
+        <f:content>
+                
+            <viz:VizFrame id="idChart" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='column' vizProperties="{
+                        'title' : {'visible' : true, 'text' : '월별 ' },
+                        'plotArea' : {
+                            dataLabel : { visible : true }
+                        }}" selectData="On">
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset id="idFlattenedDataset" data="{sub>/ZBB_FIT090Set}">
+                        <viz.data:dimensions>
+                           <viz.data:DimensionDefinition name="Buzei" value="{sub>Buzei}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="Dmbtr" value="{sub>Dmbtr}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Dmbtr" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Buzei" />
+                </viz:feeds>
+
+            </viz:VizFrame>
+    
+
+	
+        </f:content>
+        
+    </f:DynamicPage>
+</mvc:View>
