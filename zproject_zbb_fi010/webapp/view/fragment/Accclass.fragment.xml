@@ -14,6 +14,7 @@
         rows="{main>/list}"
         selectionMode="Single"
         selectionBehavior="RowSelector"
+        visibleRowCount="7"
         paste="onPaste"
         ariaLabelledBy="title"
         rowSelectionChange="OnrowSelectionChange1">

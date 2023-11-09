@@ -15,19 +15,16 @@ sap.ui.define(
       onInit: function () {
         var oModel = new sap.ui.model.json.JSONModel({
           list: [
-            { Accclass: "A", home: "서울종로구" },
-            { Accclass: "L", home: "서울동대문구" },
-            { Accclass: "C", home: "서울강남구" },
+            { Accclass: "A", text: "자산" },
+            { Accclass: "L", text: "부채" },
+            { Accclass: "C", text: "자본" },
+            { Accclass: "PR", text: "수익" },
+            { Accclass: "LO", text: "비용" },
           ],
-          obj: {
-            A: "자산",
-            L: "부채",
-            C: "자본",
-            PR: "수익",
-            LO: "비용",
-          },
         });
         this.getView().setModel(oModel, "main");
+        var oDataModel = this.getOwnerComponent().getModel();
+        debugger;
       },
       onSearch: function () {
         var oTable = this.byId("idTable");
@@ -98,17 +95,17 @@ sap.ui.define(
           // Create a filter for the binding
           oDialog
             .getBinding("items")
-            .filter([new Filter("Name", FilterOperator.Contains, sInputValue)]);
+            .filter([new Filter("Accclass", FilterOperator.Contains, sInputValue)]);
           // Open ValueHelpDialog filtered by the input's value
           oDialog.open(sInputValue);
         });
       },
-      onValueHelpSearch: function (oEvent) {
-        var sValue = oEvent.getParameter("value");
-        var oFilter = new Filter("Name", FilterOperator.Contains, sValue);
+      // onValueHelpSearch: function (oEvent) {
+      //   var sValue = oEvent.getParameter("value");
+      //   var oFilter = new Filter("Name", FilterOperator.Contains, sValue);
 
-        oEvent.getSource().getBinding("items").filter([oFilter]);
-      },
+      //   oEvent.getSource().getBinding("items").filter([oFilter]);
+      // },
       onValueHelpClose: function (oEvent) {
         var oSelectedItem = oEvent.getParameter("selectedItem");
         oEvent.getSource().getBinding("items").filter([]);
