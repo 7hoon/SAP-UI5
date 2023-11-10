@@ -33,6 +33,24 @@
                     "localUri": "localService/ZBB_FIT090_SRV/metadata.xml",
                     "odataVersion": "2.0"
                 }
+            },
+            "ZBB_FIT100_SRV": {
+                "uri": "/sap/opu/odata/SAP/ZBB_FIT100_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZBB_FIT100_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZBB_FIT020_SRV": {
+                "uri": "/sap/opu/odata/SAP/ZBB_FIT020_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZBB_FIT020_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
             }
         }
     },
@@ -83,8 +101,32 @@
                 "preload": true,
                 "settings": {}
             },
-            "sub": {
+            "FIT090": {
                 "dataSource": "ZBB_FIT090_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "FIT100": {
+                "dataSource": "ZBB_FIT100_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "FIT020": {
+                "dataSource": "ZBB_FIT020_SRV",
                 "preload": true,
                 "settings": {
                     "defaultBindingMode": "TwoWay",

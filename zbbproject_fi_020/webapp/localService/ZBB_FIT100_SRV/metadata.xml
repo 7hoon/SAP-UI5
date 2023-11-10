@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZBB_FIT100_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="ZBB_FIT100" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Cmpid"/>
+                    <PropertyRef Name="Fiyear"/>
+                    <PropertyRef Name="Postpe"/>
+                    <PropertyRef Name="Accclass"/>
+                </Key>
+                <Property Name="Cmpid" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="회사ID" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Fiyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:unicode="false" sap:label="회계연도" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Postpe" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="전기기간" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Accclass" Type="Edm.String" Nullable="false" MaxLength="2" sap:unicode="false" sap:label="계정그룹" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Dmbtr" Type="Edm.Decimal" Nullable="false" Precision="24" Scale="3" sap:unicode="false" sap:unit="Waersy" sap:label="회사통화금액" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Waersy" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화키" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityContainer Name="ZBB_FIT100_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="ZBB_FIT100Set" EntityType="ZBB_FIT100_SRV.ZBB_FIT100" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/SAP/ZBB_FIT100_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://sapmento.mento.co.kr:8001/sap/opu/odata/SAP/ZBB_FIT100_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

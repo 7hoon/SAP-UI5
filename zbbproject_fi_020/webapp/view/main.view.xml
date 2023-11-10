@@ -1,17 +1,18 @@
 <mvc:View controllerName="zbbprojectfi020.controller.main"
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
+    xmlns:t="sap.ui.table"
     xmlns:f="sap.f"
     xmlns:card="sap.f.cards"
     xmlns:core="sap.ui.core"
-xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:fb="sap.ui.comp.filterbar"
     xmlns:viz="sap.viz.ui5.controls"
     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data"
     xmlns:layout="sap.ui.layout" height="100%">
-    <f:DynamicPage id="dynamicPageId" headerExpanded="false" toggleHeaderOnTitleClick="true">
-        <!-- DynamicPage Title -->
+    <!-- <f:DynamicPage id="dynamicPageId" headerExpanded="false" toggleHeaderOnTitleClick="true">
         <f:title >
+        
             <f:DynamicPageTitle >
 
                 <f:heading>
@@ -36,7 +37,6 @@ xmlns:fb="sap.ui.comp.filterbar"
 
             </f:DynamicPageTitle>
         </f:title>
-        <!-- DynamicPage Header -->
         <f:header>
             <f:DynamicPageHeader pinnable="false">
                 <layout:HorizontalLayout allowWrapping="true">
@@ -57,34 +57,216 @@ xmlns:fb="sap.ui.comp.filterbar"
         </f:header>
 
         <f:content>
-                
+    
             <viz:VizFrame id="idChart" uiConfig="{applicationSet:'fiori'}" height='100%' width="100%" vizType='column' vizProperties="{
-                        'title' : {'visible' : true, 'text' : '월별 ' },
+                        'title' : {'visible' : true, 'text' : '월별 매출' },
                         'plotArea' : {
+                            colorPalette : ['#6799FF','#6B66FF','#FAED7D'],
                             dataLabel : { visible : true }
                         }}" selectData="On">
 
                 <viz:dataset>
-                    <viz.data:FlattenedDataset id="idFlattenedDataset" data="{sub>/ZBB_FIT090Set}">
+                    <viz.data:FlattenedDataset id="idFlattenedDataset" data="{sub2>/ZBB_FIT100Set}">
                         <viz.data:dimensions>
-                           <viz.data:DimensionDefinition name="Buzei" value="{sub>Buzei}" />
+                           <viz.data:DimensionDefinition name="월" value="{sub2>Postpe}" />
                         </viz.data:dimensions>
                         <viz.data:measures>
-                            <viz.data:MeasureDefinition name="Dmbtr" value="{sub>Dmbtr}" />
+                            <viz.data:MeasureDefinition name="매출" value="{sub2>Dmbtr}" />
                         </viz.data:measures>
                     </viz.data:FlattenedDataset>
                 </viz:dataset>
 
                 <viz:feeds>
-                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Dmbtr" />
-                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="Buzei" />
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="매출" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="월" />
                 </viz:feeds>
 
             </viz:VizFrame>
-    
 
 	
         </f:content>
         
-    </f:DynamicPage>
+    </f:DynamicPage> -->
+    <Page id="page">
+        <Panel expandable="true" expanded="false">
+            <headerToolbar>
+                <Toolbar>
+                    <Text text="SAPANDA" />
+                    <GenericTag text="" status="Success" press="onPressOpenPopover" design="StatusIconHidden">
+                        <ObjectNumber number="250K" unit="KRW" emphasized="false" state="Error"/>
+                    </GenericTag>
+                </Toolbar>
+            </headerToolbar>
+        </Panel>
+        <content>
+            <viz:VizFrame id="idChart" uiConfig="{applicationSet:'fiori'}" height='50%' width="100%" vizType='column' vizProperties="{
+                        'title' : {'visible' : true, 'text' : '월별 매출' },
+                        'plotArea' : {
+                            colorPalette : ['#6799FF','#6B66FF','#FAED7D'],
+                            dataLabel : { visible : true }
+                        }}" selectData="OnselectData">
+
+                <viz:dataset>
+                    <viz.data:FlattenedDataset id="idFlattenedDataset" data="{FIT100>/ZBB_FIT100Set}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="월" value="{FIT100>Postpe}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                            <viz.data:MeasureDefinition name="매출" value="{FIT100>Dmbtr}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="매출" />
+                    <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="월" />
+                </viz:feeds>
+
+            </viz:VizFrame>
+            <t:Table id="idTable" rows="{view>/ZBB_FIT020Set}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="3" rowActionCount="1" paste="onPaste" ariaLabelledBy="title">
+                <!-- selectionMode="Single" -> 단건선택 selectionBehavior="RowOnly" -> 체크박스 사라짐, "row" 는 체크박스뿐만 아니라 행을 선택해도 선택가능 -->
+                <t:extension>
+                    <OverflowToolbar style="Clear">
+                        <Title id="title" text="전표 조회"/>
+                        <ToolbarSpacer />
+                        <Button text="Add" press="onAdd"></Button>
+                        <Button text="Delete" press="onDelete"></Button>
+                    </OverflowToolbar>
+                </t:extension>
+                <t:columns>
+                    <t:Column>
+                        <Label text="전표번호" />
+                        <t:template>
+                            <Text text="{view>Slipno}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="회계연도" />
+                        <t:template>
+                            <Text text="{view>Fiyear}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="전표유형" />
+                        <t:template>
+                            <Text text="{view>Sltype}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="전기월" />
+                        <t:template>
+                            <Text text="{view>Postpe}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="전기일" />
+                        <t:template>
+                            <Text text="{path : 'view>Budat',
+                                        type : 'sap.ca.ui.model.type.Date'}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="증빙일" />
+                        <t:template>
+                            <Text text="{path : 'view>Cpudt',
+                                        type : 'sap.ca.ui.model.type.Date' }" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="통화" />
+                        <t:template>
+                            <Text text="{view>Waers}" />
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+                <t:rowActionTemplate>
+                    <t:RowAction >
+                        <t:items>
+                            <t:RowActionItem type="Delete" press="onRowActionDel"/>
+                        </t:items>
+                    </t:RowAction>
+                </t:rowActionTemplate>
+            </t:Table>
+            <t:Table id="idTable2" rows="{FIT090>/ZBB_FIT090Set}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="3" rowActionCount="1" paste="onPaste" ariaLabelledBy="title">
+                <!-- selectionMode="Single" -> 단건선택 selectionBehavior="RowOnly" -> 체크박스 사라짐, "row" 는 체크박스뿐만 아니라 행을 선택해도 선택가능 -->
+                <t:extension>
+                    <OverflowToolbar style="Clear">
+                    </OverflowToolbar>
+                </t:extension>
+                <t:columns>
+                    <t:Column>
+                        <Label text="전표번호" />
+                        <t:template>
+                            <Text text="{FIT090>Slipno}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="아이템 번호" />
+                        <t:template>
+                            <Text text="{FIT090>Buzei}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="회계연도" />
+                        <t:template>
+                            <Text text="{FIT090>Fiyear}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column >
+                        <Label text="계정ID" />
+                        <t:template>
+                            <Text text="{FIT090>Accid}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="계정그룹" />
+                        <t:template>
+                            <Text text="{FIT090>Accclass}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="Accclassnm" />
+                        <t:template>
+                            <Text text="{FIT090>Accclassnm}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="Accclassnm2" />
+                        <t:template>
+                            <Text text="{FIT090>Accclassnm2}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="계정과목" />
+                        <t:template>
+                            <Text text="{FIT090>Acctdes}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="금액" />
+                        <t:template>
+                            <Text text="{FIT090>Dmbtr}" />
+                        </t:template>
+                    </t:Column>
+                    <t:Column>
+                        <Label text="통화" />
+                        <t:template>
+                            <Text text="{FIT090>Waers}" />
+                        </t:template>
+                    </t:Column>
+                </t:columns>
+                <t:rowActionTemplate>
+                    <t:RowAction >
+                        <t:items>
+                            <t:RowActionItem type="Delete" press="onRowActionDel"/>
+                        </t:items>
+                    </t:RowAction>
+                </t:rowActionTemplate>
+            </t:Table>
+
+
+
+        </content>
+    </Page>
+
 </mvc:View>

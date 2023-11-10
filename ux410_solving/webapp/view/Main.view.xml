@@ -43,7 +43,7 @@
                         'title' : {'visible' : false },
                         'plotArea' : {
                             dataLabel : { visible : true }
-                        }}" selectData="On">
+                        }}" selectData="OnselectData">
 
                 <viz:dataset>
                     <viz.data:FlattenedDataset id="idFlattenedDataset" data="{/Order_Details}">

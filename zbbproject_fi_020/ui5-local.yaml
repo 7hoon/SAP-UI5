@@ -35,6 +35,12 @@ server:
           - path: /sap
             url: http://sapmento.mento.co.kr:8001/
             client: '100'
+          - path: /sap/opu/odata/SAP/ZBB_FIT100_SRV/
+            url: http://sapmento.mento.co.kr:8001/
+            client: '100'
+          - path: /sap/opu/odata/SAP/ZBB_FIT020_SRV/
+            url: http://sapmento.mento.co.kr:8001/
+            client: '100'
     - name: sap-fe-mockserver
       beforeMiddleware: csp
       configuration:
