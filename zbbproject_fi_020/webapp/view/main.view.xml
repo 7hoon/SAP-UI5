@@ -123,11 +123,12 @@
                 </viz:feeds>
 
             </viz:VizFrame>
-            <t:Table id="idTable" rows="{view>/ZBB_FIT020Set}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="3" rowActionCount="1" paste="onPaste" ariaLabelledBy="title">
+            <t:Table id="idTable" rows="{view>/results}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="3" 
+            paste="onPaste" ariaLabelledBy="title" rowSelectionChange="OnrowSelectionChange">
                 <!-- selectionMode="Single" -> 단건선택 selectionBehavior="RowOnly" -> 체크박스 사라짐, "row" 는 체크박스뿐만 아니라 행을 선택해도 선택가능 -->
                 <t:extension>
                     <OverflowToolbar style="Clear">
-                        <Title id="title" text="전표 조회"/>
+                        <Title id="title" text="전표 조회 (차트 선택시 해당 월 전표 조회 가능)"/>
                         <ToolbarSpacer />
                         <Button text="Add" press="onAdd"></Button>
                         <Button text="Delete" press="onDelete"></Button>
@@ -179,89 +180,76 @@
                         </t:template>
                     </t:Column>
                 </t:columns>
-                <t:rowActionTemplate>
-                    <t:RowAction >
-                        <t:items>
-                            <t:RowActionItem type="Delete" press="onRowActionDel"/>
-                        </t:items>
-                    </t:RowAction>
-                </t:rowActionTemplate>
             </t:Table>
-            <t:Table id="idTable2" rows="{FIT090>/ZBB_FIT090Set}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="3" rowActionCount="1" paste="onPaste" ariaLabelledBy="title">
+            <t:Table id="idTable2" rows="{view2>/results}" selectionMode="Single" selectionBehavior="RowOnly" visibleRowCount="3" rowActionCount="1" paste="onPaste" ariaLabelledBy="title">
                 <!-- selectionMode="Single" -> 단건선택 selectionBehavior="RowOnly" -> 체크박스 사라짐, "row" 는 체크박스뿐만 아니라 행을 선택해도 선택가능 -->
-                <t:extension>
+                <!-- <t:extension>
                     <OverflowToolbar style="Clear">
+                    <Title text="전표 아이템"/>
                     </OverflowToolbar>
-                </t:extension>
+                </t:extension> -->
                 <t:columns>
                     <t:Column>
                         <Label text="전표번호" />
                         <t:template>
-                            <Text text="{FIT090>Slipno}" />
+                            <Text text="{view2>Slipno}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="아이템 번호" />
                         <t:template>
-                            <Text text="{FIT090>Buzei}" />
+                            <Text text="{view2>Buzei}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="회계연도" />
                         <t:template>
-                            <Text text="{FIT090>Fiyear}" />
+                            <Text text="{view2>Fiyear}" />
                         </t:template>
                     </t:Column>
                     <t:Column >
                         <Label text="계정ID" />
                         <t:template>
-                            <Text text="{FIT090>Accid}" />
+                            <Text text="{view2>Accid}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="계정그룹" />
                         <t:template>
-                            <Text text="{FIT090>Accclass}" />
+                            <Text text="{view2>Accclass}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="Accclassnm" />
                         <t:template>
-                            <Text text="{FIT090>Accclassnm}" />
+                            <Text text="{view2>Accclassnm}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="Accclassnm2" />
                         <t:template>
-                            <Text text="{FIT090>Accclassnm2}" />
+                            <Text text="{view2>Accclassnm2}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="계정과목" />
                         <t:template>
-                            <Text text="{FIT090>Acctdes}" />
+                            <Text text="{view2>Acctdes}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="금액" />
                         <t:template>
-                            <Text text="{FIT090>Dmbtr}" />
+                            <Text text="{view2>Dmbtr}" />
                         </t:template>
                     </t:Column>
                     <t:Column>
                         <Label text="통화" />
                         <t:template>
-                            <Text text="{FIT090>Waers}" />
+                            <Text text="{view2>Waers}" />
                         </t:template>
                     </t:Column>
                 </t:columns>
-                <t:rowActionTemplate>
-                    <t:RowAction >
-                        <t:items>
-                            <t:RowActionItem type="Delete" press="onRowActionDel"/>
-                        </t:items>
-                    </t:RowAction>
-                </t:rowActionTemplate>
             </t:Table>
 
 

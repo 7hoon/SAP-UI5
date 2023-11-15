@@ -12,6 +12,7 @@ sap.ui.define(
     return Controller.extend("zbbprojectfi020.controller.main", {
       onInit: function () {
         this.getView().setModel(new JSONModel(), "view");
+        this.getView().setModel(new JSONModel(), "view2");
       },
       onPressOpenPopover: function (oEvent) {
         var oView = this.getView(),
@@ -35,36 +36,71 @@ sap.ui.define(
         var oTable = this.byId("idTable")
         var oJSONModel = this.getView().getModel("view");
         var oModel = this.getOwnerComponent().getModel('FIT020');
-
+        var aFilters = [];
         // oJSONModel.setProperty("/", oModel);
         var oPostpe = oEvent.getParameters().data[0].data.월;
-        var aFilters = [];
-    
-
+        
         if (oPostpe){
-            aFilters.push(
-              new Filter({
-                path: "Postpe",
-                operator: "EQ",
-                value1: oPostpe,
-              }))
-            }
-            // oTable.getBinding("rows").filter(aFilters);
-            // var sPath = oModel.createKey("/ZBB_FIT020Set", {
-            //   });
+          aFilters.push(
+            new Filter({
+              path: "Postpe",
+              operator: "EQ",
+              value1: oPostpe,
+            }))
+          }
+        // oJSONModel.setProperty("/", oModel);
             oModel.read("/ZBB_FIT020Set", {
-                // filters: aFilters,
+                filters: aFilters,
                 success: function (oReturn) {
                     oJSONModel.setProperty("/", oReturn); 
+                    // debugger;
                     // oJSONModel.setData(oReturn); 
-                // or oModelJson.setData(oData.results); 
                 },
                 error: function (oError) {
                     console.log("Error 발생");
                   },
                 })   
-                debugger;
+               
       },
+      OnrowSelectionChange: function(oEvent){
+        /*
+         getSource() : 이벤트를 일으킨 객체
+         getParameters() : 이벤트 관련 정보
+       */
+         // var sPath = oEvent.getParameters().rowContext.getPath();
+         // var oModel = this.getView().getModel();
+         // var oItem = oModel.getProperty(sPath);
+         // var oInput = this.byId("idInput");
+         // oInput.setValue(oItem.OrderID);
+         var sPath = oEvent.getParameters().rowContext.getObject();
+         debugger;
+         var oJSONModel = this.getView().getModel("view2");
+         var oModel = this.getOwnerComponent().getModel('FIT090');
+         var aFilters = [];
+         // oJSONModel.setProperty("/", oModel);
+         var oSlipno = sPath.Slipno;
+         
+         if (oSlipno){
+           aFilters.push(
+             new Filter({
+               path: "Slipno",
+               operator: "EQ",
+               value1: oSlipno,
+             }))
+           }
+         // oJSONModel.setProperty("/", oModel);
+             oModel.read("/ZBB_FIT090Set", {
+                 filters: aFilters,
+                 success: function (oReturn) {
+                     oJSONModel.setProperty("/", oReturn); 
+                     // debugger;
+                     // oJSONModel.setData(oReturn); 
+                 },
+                 error: function (oError) {
+                     console.log("Error 발생");
+                   },
+                 })   
+     },
     });
   }
 );
