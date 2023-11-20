@@ -1,0 +1,59 @@
+<mvc:View controllerName="zbbproject030.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f">
+<f:DynamicPage id="dynamicPageId"
+				   toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="자재마스터 ()"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<Table
+				id="productsTable"
+				mode="SingleSelectMaster"
+				itemPress="onListItemPress"
+				inset="false"
+				items="{
+					path: 'ZBB_MMT010_SRV>/ZBB_MMT010Set',
+					sorter: {
+						path: 'MatCd'
+					}
+				}"
+				class="sapFDynamicPageAlignContent"
+				width="auto">
+				<headerToolbar>
+					<OverflowToolbar>
+						<ToolbarSpacer/>
+						<SearchField search="onSearch" width="17.5rem"/>
+					</OverflowToolbar>
+				</headerToolbar>
+				<columns>
+					<Column width="12em">
+						<Text text="자재ID" />
+					</Column>
+					<Column	hAlign="End">
+						<Text text="자재명" />
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem type="Navigation">
+						<cells>
+							<ObjectIdentifier title="{ZBB_MMT010_SRV>MatCd}" text="{ZBB_MMT010_SRV>MatNm}" />
+							<ObjectNumber
+									number="{
+										parts:[{path:'ZBB_MMT010_SRV>SuplId'}]
+									}" />
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
