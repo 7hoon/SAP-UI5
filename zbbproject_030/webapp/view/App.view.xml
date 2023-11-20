@@ -1,7 +1,21 @@
 <mvc:View controllerName="zbbproject030.controller.App"
     xmlns:html="http://www.w3.org/1999/xhtml"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
-    xmlns="sap.m">
-    <App id="app">
-    </App>
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.f"
+    xmlns:m="sap.m">
+       <m:App id="app">
+	<FlexibleColumnLayout id="flexibleColumnLayout" backgroundDesign="Solid">
+		<beginColumnPages>
+			<mvc:XMLView id="beginView" viewName="zbbproject030.view.Main"/>
+		</beginColumnPages>
+		<midColumnPages>
+			<mvc:XMLView id="detailView" viewName="zbbproject030.view.Detail"/>
+		</midColumnPages>
+	</FlexibleColumnLayout>
+	<!-- <FlexibleColumnLayout
+		id="flexibleColumnLayout"
+		stateChange=".onStateChanged"
+		backgroundDesign="Solid"
+		layout="TwoColumnsMidExpanded"/> -->
+           </m:App>
 </mvc:View>

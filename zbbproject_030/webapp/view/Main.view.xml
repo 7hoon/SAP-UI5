@@ -1,5 +1,5 @@
 <mvc:View controllerName="zbbproject030.controller.Main"
-    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:mvc="sap.ui.core.mvc" 
     xmlns="sap.m"
     xmlns:f="sap.f">
 <f:DynamicPage id="dynamicPageId"
@@ -8,7 +8,7 @@
 		<f:title>
 			<f:DynamicPageTitle>
 				<f:heading>
-					<Title text="자재마스터 ()"/>
+					<Title text="자재마스터 (27)"/>
 				</f:heading>
 			</f:DynamicPageTitle>
 		</f:title>
@@ -39,7 +39,7 @@
 						<Text text="자재ID" />
 					</Column>
 					<Column	hAlign="End">
-						<Text text="자재명" />
+						<Text text="공급업체ID" />
 					</Column>
 				</columns>
 				<items>
