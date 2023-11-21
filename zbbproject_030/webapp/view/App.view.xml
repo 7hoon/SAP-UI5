@@ -4,7 +4,7 @@
     xmlns="sap.f"
     xmlns:m="sap.m">
        <m:App id="app">
-	<FlexibleColumnLayout id="flexibleColumnLayout" backgroundDesign="Solid">
+	<FlexibleColumnLayout id="flexibleColumnLayout" backgroundDesign="Solid" layout="TwoColumnsMidExpanded">
 		<beginColumnPages>
 			<mvc:XMLView id="beginView" viewName="zbbproject030.view.Main"/>
 		</beginColumnPages>
@@ -16,6 +16,6 @@
 		id="flexibleColumnLayout"
 		stateChange=".onStateChanged"
 		backgroundDesign="Solid"
-		layout="TwoColumnsMidExpanded"/> -->
+		layout="{/layout}"/> -->
            </m:App>
 </mvc:View>

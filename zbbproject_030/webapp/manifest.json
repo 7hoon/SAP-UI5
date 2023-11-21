@@ -120,18 +120,19 @@
         {
           "name": "RouteMain",
           "pattern": ":?query:",
-          "target": ["TargetMain"]
+          "target": ["TargetMain", "TargetDetail"]
         },
         {
           "name": "RouteDetail",
           "pattern": "detail/{paramMatCd}/{param2}/:param3:",
-          "target": ["TargetDetail"]
+          "target": ["TargetMain", "TargetDetail"]
         }
       ],
       "targets": {
         "TargetMain": {
           "viewType": "XML",
           "transition": "slide",
+          "name" : "TargetMain",
           "controlAggregation": "beginColumnPages",
           "clearControlAggregation": false,
           "viewId": "Main",
@@ -140,6 +141,7 @@
         "TargetDetail": {
           "viewType": "XML",
           "transition": "slide",
+          "name" : "TargetDetail",
           "controlAggregation": "midColumnPages",
           "clearControlAggregation": false,
           "viewId": "Detail",

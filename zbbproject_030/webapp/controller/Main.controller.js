@@ -15,8 +15,17 @@ sap.ui.define(
     return Controller.extend("zbbproject030.controller.Main", {
       onInit: function () {
         this.oRouter = this.getOwnerComponent().getRouter();
+        this.oRouter2 = this.getOwnerComponent();
+        var oModel = new sap.ui.model.json.JSONModel();
+        this.getView().setModel(oModel, "fclmodel");
       },
       onListItemPress: function (oEvent) {
+        var oModel = this.getView().getModel("fclmodel");
+        var oDatas = {"age" : "TwoColumnsMidExpanded"};
+        oModel.setProperty("/age",oDatas);
+        oModel = 'TwoColumnsMidExpanded';
+
+        
         var MatCdPath = oEvent.getSource().getSelectedItem();
         var MatCd = MatCdPath.getCells()[0].mProperties.title;
         var SuplId = MatCdPath.getCells()[1].mProperties.number;
