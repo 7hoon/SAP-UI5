@@ -21,11 +21,10 @@ sap.ui.define(
       },
       onListItemPress: function (oEvent) {
         var oModel = this.getView().getModel("fclmodel");
-        var oDatas = {"age" : "TwoColumnsMidExpanded"};
-        oModel.setProperty("/age",oDatas);
-        oModel = 'TwoColumnsMidExpanded';
+        var oDatas = { age: "TwoColumnsMidExpanded" };
+        oModel.setProperty("/age", oDatas);
+        oModel = "TwoColumnsMidExpanded";
 
-        
         var MatCdPath = oEvent.getSource().getSelectedItem();
         var MatCd = MatCdPath.getCells()[0].mProperties.title;
         var SuplId = MatCdPath.getCells()[1].mProperties.number;

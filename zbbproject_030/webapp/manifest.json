@@ -108,31 +108,32 @@
     },
     "routing": {
       "config": {
-        "routerClass": "sap.m.routing.Router",
+        "routerClass": "sap.f.routing.Router",
+        "type": "View",
         "viewType": "XML",
         "async": true,
         "viewPath": "zbbproject030.view",
-        "controlAggregation": "pages",
-        "controlId": "app",
+        "transition": "slide",
+        "controlId": "flexibleColumnLayout",
         "clearControlAggregation": false
       },
       "routes": [
         {
           "name": "RouteMain",
-          "pattern": ":?query:",
+          "pattern": ":param3:",
           "target": ["TargetMain", "TargetDetail"]
         },
         {
           "name": "RouteDetail",
           "pattern": "detail/{paramMatCd}/{param2}/:param3:",
-          "target": ["TargetMain", "TargetDetail"]
+          "target": ["TargetMain","TargetDetail" ]
         }
       ],
       "targets": {
         "TargetMain": {
           "viewType": "XML",
           "transition": "slide",
-          "name" : "TargetMain",
+          "name" : "RouteMain",
           "controlAggregation": "beginColumnPages",
           "clearControlAggregation": false,
           "viewId": "Main",
@@ -141,7 +142,7 @@
         "TargetDetail": {
           "viewType": "XML",
           "transition": "slide",
-          "name" : "TargetDetail",
+          "name" : "RouteDetail",
           "controlAggregation": "midColumnPages",
           "clearControlAggregation": false,
           "viewId": "Detail",

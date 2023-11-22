@@ -16,6 +16,6 @@
 		id="flexibleColumnLayout"
 		stateChange=".onStateChanged"
 		backgroundDesign="Solid"
-		layout="{/layout}"/> -->
+		layout="{/param3}"/> -->
            </m:App>
 </mvc:View>
