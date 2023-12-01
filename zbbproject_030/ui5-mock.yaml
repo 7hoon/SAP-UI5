@@ -19,6 +19,9 @@ server:
           - path: /sap
             url: http://sapmento.mento.co.kr:8001/
             client: "100"
+          - path: /sap/opu/odata/SAP/ZBB_MMT020_SRV/
+            url: http://sapmento.mento.co.kr:8001/
+            client: "100"
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -43,4 +46,8 @@ server:
           - urlPath: /sap/opu/odata/SAP/ZBB_MMT010_SRV/
             metadataXmlPath: ./webapp/localService/ZBB_MMT010_SRV/metadata.xml
             mockdataRootPath: ./webapp/localService/ZBB_MMT010_SRV/mockdata
+            generateMockData: true
+          - urlPath: /sap/opu/odata/SAP/ZBB_MMT020_SRV/
+            metadataXmlPath: ./webapp/localService/ZBB_MMT020_SRV/metadata.xml
+            mockdataRootPath: ./webapp/localService/ZBB_MMT020_SRV/mockdata
             generateMockData: true

@@ -21,6 +21,9 @@ server:
           - path: /sap
             url: http://sapmento.mento.co.kr:8001/
             client: '100'
+          - path: /sap/opu/odata/SAP/ZBB_MMT020_SRV/
+            url: http://sapmento.mento.co.kr:8001/
+            client: '100'
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:

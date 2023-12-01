@@ -130,8 +130,8 @@
                     <OverflowToolbar style="Clear">
                         <Title id="title" text="전표 조회 (차트 선택시 해당 월 전표 조회 가능)"/>
                         <ToolbarSpacer />
-                        <Button text="Add" press="onAdd"></Button>
-                        <Button text="Delete" press="onDelete"></Button>
+                        <!-- <Button text="Add" press="onAdd"></Button>
+                        <Button text="Delete" press="onDelete"></Button> -->
                     </OverflowToolbar>
                 </t:extension>
                 <t:columns>
@@ -251,9 +251,6 @@
                     </t:Column>
                 </t:columns>
             </t:Table>
-
-
-
         </content>
     </Page>
 

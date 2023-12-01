@@ -1,111 +1,99 @@
-<mvc:View  controllerName="zbbproject030.controller.Detail" height="100%"
-		xmlns="sap.uxap"
-		xmlns:mvc="sap.ui.core.mvc"
-		xmlns:m="sap.m"
-		xmlns:f="sap.f"
-		xmlns:form="sap.ui.layout.form">
+<mvc:View controllerName="zbbproject030.controller.Detail" height="100%"
+	xmlns="sap.uxap"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns:m="sap.m"
+	xmlns:f="sap.f"
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form">
 
-	<ObjectPageLayout id="ObjectPageLayout"
-					 showTitleInHeaderContent="true"
-					alwaysShowContentHeader="false"
-					useIconTabBar="true"
-					preserveHeaderStateOnScroll="false"
-					headerContentPinnable="true"
-					isChildPage="true"
-					upperCaseAnchorBar="false">
-				<headerTitle>
-					<ObjectPageDynamicHeaderTitle>
-						<expandedHeading>
-							<m:Title text="{MatCdDetails>/MatCd}" wrapping="true" class="sapUiSmallMarginEnd"/>
-						</expandedHeading>
+	<ObjectPageLayout id="ObjectPageLayout" showTitleInHeaderContent="true" alwaysShowContentHeader="false" useIconTabBar="true" preserveHeaderStateOnScroll="false" headerContentPinnable="true" isChildPage="true" upperCaseAnchorBar="false">
+		<headerTitle>
+			<ObjectPageDynamicHeaderTitle>
+				<expandedHeading>
+					<m:Title text="{MatCdDetails>/MatCd}" wrapping="true" class="sapUiSmallMarginEnd"/>
+				</expandedHeading>
 
-						<snappedHeading>
-							<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
-								<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
-									<m:Title text="{MatCdDetails>/MatCd}" wrapping="true" class="sapUiTinyMarginEnd"/>
-								</m:FlexBox>
-							</m:FlexBox>
-						</snappedHeading>
-
-						<navigationActions>
-							<m:OverflowToolbarButton type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" id="enterFullScreenBtn" tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
-							<m:OverflowToolbarButton type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" id="exitFullScreenBtn" tooltip="Exit Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"/>
-							<m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose"  tooltip="Close middle column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
-						</navigationActions>
-
-					</ObjectPageDynamicHeaderTitle>
-				</headerTitle>
-
-				<headerContent>
-				<m:Title text="테스트"></m:Title>
-					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Stretch">
-		<m:TileContent footer="Current Quarter" unit="EUR" class="sapUiSmallMargin">
-			<m:NumericContent scale="M" value="1.96"
-				valueColor="Error" indicator="Up" />
-		</m:TileContent>
+				<snappedHeading>
+					<m:FlexBox wrap="Wrap" fitContainer="true" alignItems="Center">
+						<m:FlexBox wrap="NoWrap" fitContainer="true" alignItems="Center" class="sapUiTinyMarginEnd">
+							<m:Title text="자재데이터" wrapping="true" class="sapUiTinyMarginEnd"/>
+						</m:FlexBox>
 					</m:FlexBox>
-				</headerContent>
+				</snappedHeading>
+
+				<navigationActions>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://full-screen" press="handleFullScreen" id="enterFullScreenBtn" tooltip="Enter Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/fullScreen} !== null }"/>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://exit-full-screen" press="handleExitFullScreen" id="exitFullScreenBtn" tooltip="Exit Full Screen Mode" visible="{= ${/actionButtonsInfo/midColumn/exitFullScreen} !== null }"/>
+					<m:OverflowToolbarButton type="Transparent" icon="sap-icon://decline" press="handleClose" tooltip="Close middle column" visible="{= ${/actionButtonsInfo/midColumn/closeColumn} !== null }"/>
+				</navigationActions>
+
+			</ObjectPageDynamicHeaderTitle>
+		</headerTitle>
+
+		<headerContent>
+			<m:Title text="자재데이터"></m:Title>
+
+		</headerContent>
 
 		<sections>
-			<ObjectPageSection title="자재데이터">
+			<ObjectPageSection>
 				<subSections>
 					<ObjectPageSubSection>
-					<m:VBox class="sapUiSmallMargin">
+						<m:VBox class="sapUiSmallMargin">
 
-							<form:SimpleForm
-								maxContainerCols="2"
-								editable="false"
-								layout="ResponsiveGridLayout"
-								title="자재"
-								labelSpanL="12"
-								labelSpanM="12"
-								emptySpanL="0"
-								emptySpanM="0"
-								columnsL="1"
-								columnsM="1">
+							<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="자재" labelSpanL="12" labelSpanM="12" emptySpanL="0" emptySpanM="0" columnsL="1" columnsM="1">
 								<form:content>
 									<m:Label text="자재명"/>
 									<m:Text text="{MatCdDetails>/MatNm}"/>
 									<m:Label text="자재타입"/>
 									<m:Text text="{MatCdDetails>/MatTypeNm}"/>
 									<m:Label text="Supplier"/>
-									<m:Text text="{products>SupplierName}"/>
+									<m:Text text="{MatCdDetails>/SuplId}"/>
 								</form:content>
 							</form:SimpleForm>
-		<form:SimpleForm
-								maxContainerCols="2"
-								editable="false"
-								layout="ResponsiveGridLayout"
-								title="공급업체"
-								labelSpanL="12"
-								labelSpanM="12"
-								emptySpanL="0"
-								emptySpanM="0"
-								columnsL="1"
-								columnsM="1">
+							<form:SimpleForm editable="false" layout="ResponsiveGridLayout" title="Address" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="2" columnsL="2" columnsM="2" singleContainerFullSize="false">
 								<form:content>
-									<m:Label text="자재명"/>
-									<m:Text text="{MatCdDetails>/MatNm}"/>
-									<m:Label text="자재타입"/>
-									<m:Text text="{MatCdDetails>/MatTypeNm}"/>
-									<m:Label text="Supplier"/>
-									<m:Text text="{products>SupplierName}"/>
+									<core:Title text="공급업체 정보" />
+									<m:Label text="공급업체ID"/>
+									<m:Text text="{SuplIdDetails>/SuplId}"/>
+									<m:Label text="공급업체명"/>
+									<m:Text text="{SuplIdDetails>/SuplNm}"/>
+									<m:Label text="공급업체주소 "/>
+									<m:Text text="{SuplIdDetails>/SuplAddr}"/>
+									<m:Label text="공급업체전화번호 "/>
+									<m:Text text="{SuplIdDetails>/TelNb}"/>
+									<m:Label text="공급업체담당자 "/>
+									<m:Text text="{SuplIdDetails>/ManNm}"/>
+									<m:Label text="공급업체담당자전화번호 "/>
+									<m:Text text="{SuplIdDetails>/ManPh}"/>
+									<m:Label text="공급업체사업자등록번호 "/>
+									<m:Text text="{SuplIdDetails>/BussNb}"/>
+									<core:Title text="은행 정보" />
+									<m:Label text="공급업체 은행명"/>
+									<m:Text text="{SuplIdDetails>/BankNm}"/>
+									<m:Label text="공급업체 은행 계좌"/>
+									<m:Text text="{SuplIdDetails>/BankNum}"/>
+									<m:Label text="공급업체 입금주 명"/>
+									<m:Text text="{SuplIdDetails>/BankBussNm}"/>
+									<core:Title text="구매 정보"/>
+									<m:Label text="구매담당자 "/>
+									<m:Text text="{SuplIdDetails>/ManNm}"/>
+									<m:Label text="구매 담당자 전화번호"/>
+									<m:Text text="{SuplIdDetails>/ManPh}"/>
+
+
+
 								</form:content>
 							</form:SimpleForm>
-							</m:VBox>
+						</m:VBox>
 					</ObjectPageSubSection>
 				</subSections>
 			</ObjectPageSection>
 
-			<ObjectPageSection title="차트">
+			<!-- <ObjectPageSection title="차트">
 				<subSections>
 					<ObjectPageSubSection>
-						<blocks>
-							<m:Table
-								id="suppliersTable"
-								mode="SingleSelectMaster"
-								itemPress="handleItemPress"
-								items="{path : 'products>/ProductCollectionStats/Filters/1/values'}">
+						<blocks> <m:Table id="suppliersTable" mode="SingleSelectMaster" itemPress="handleItemPress" items="{path : 'products>/ProductCollectionStats/Filters/1/values'}">
 								<m:columns>
 									<m:Column />
 								</m:columns>
@@ -120,7 +108,7 @@
 						</blocks>
 					</ObjectPageSubSection>
 				</subSections>
-			</ObjectPageSection>
+			</ObjectPageSection> -->
 		</sections>
 	</ObjectPageLayout>
 </mvc:View>

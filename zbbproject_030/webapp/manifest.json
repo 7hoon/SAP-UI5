@@ -1,160 +1,187 @@
 {
-  "_version": "1.49.0",
-  "sap.app": {
-    "id": "zbbproject030",
-    "type": "application",
-    "i18n": "i18n/i18n.properties",
-    "applicationVersion": {
-      "version": "0.0.1"
-    },
-    "title": "{{appTitle}}",
-    "description": "{{appDescription}}",
-    "resources": "resources.json",
-    "sourceTemplate": {
-      "id": "@sap/generator-fiori:basic",
-      "version": "1.10.5",
-      "toolsId": "d548cb54-4a95-47ce-992c-0b69e93949b2"
-    },
-    "dataSources": {
-      "mainService": {
-        "uri": "/sap/opu/odata/SAP/ZBB_MMT070_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/mainService/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      },
-      "ZBB_MMT010_SRV": {
-        "uri": "/sap/opu/odata/SAP/ZBB_MMT010_SRV/",
-        "type": "OData",
-        "settings": {
-          "annotations": [],
-          "localUri": "localService/ZBB_MMT010_SRV/metadata.xml",
-          "odataVersion": "2.0"
-        }
-      }
-    }
-  },
-  "sap.ui": {
-    "technology": "UI5",
-    "icons": {
-      "icon": "",
-      "favIcon": "",
-      "phone": "",
-      "phone@2": "",
-      "tablet": "",
-      "tablet@2": ""
-    },
-    "deviceTypes": {
-      "desktop": true,
-      "tablet": true,
-      "phone": true
-    }
-  },
-  "sap.ui5": {
-    "flexEnabled": false,
-    "dependencies": {
-      "minUI5Version": "1.120.1",
-      "libs": {
-        "sap.m": {},
-        "sap.ui.core": {},
-        "sap.f": {},
-        "sap.suite.ui.generic.template": {},
-        "sap.ui.comp": {},
-        "sap.ui.generic.app": {},
-        "sap.ui.table": {},
-        "sap.ushell": {}
-      }
-    },
-    "config": {
-			"fullWidth": true
-		},
-    "contentDensities": {
-      "compact": true,
-      "cozy": true
-    },
-    "models": {
-      "i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "settings": {
-          "bundleName": "zbbproject030.i18n.i18n"
-        }
-      },
-      "": {
-        "dataSource": "mainService",
-        "preload": true,
-        "settings": {}
-      },
-      "ZBB_MMT010_SRV": {
-        "dataSource": "ZBB_MMT010_SRV",
-        "preload": true,
-        "settings": {
-          "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Inline",
-          "refreshAfterChange": false,
-          "metadataUrlParams": {
-            "sap-value-list": "none"
-          }
-        }
-      }
-    },
-    "resources": {
-      "css": [
-        {
-          "uri": "css/style.css"
-        }
-      ]
-    },
-    "routing": {
-      "config": {
-        "routerClass": "sap.f.routing.Router",
-        "type": "View",
-        "viewType": "XML",
-        "async": true,
-        "viewPath": "zbbproject030.view",
-        "transition": "slide",
-        "controlId": "flexibleColumnLayout",
-        "clearControlAggregation": false
-      },
-      "routes": [
-        {
-          "name": "RouteMain",
-          "pattern": ":param3:",
-          "target": ["TargetMain", "TargetDetail"]
+    "_version": "1.49.0",
+    "sap.app": {
+        "id": "zbbproject030",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
         },
-        {
-          "name": "RouteDetail",
-          "pattern": "detail/{paramMatCd}/{param2}/:param3:",
-          "target": ["TargetMain","TargetDetail" ]
-        }
-      ],
-      "targets": {
-        "TargetMain": {
-          "viewType": "XML",
-          "transition": "slide",
-          "name" : "RouteMain",
-          "controlAggregation": "beginColumnPages",
-          "clearControlAggregation": false,
-          "viewId": "Main",
-          "viewName": "Main"
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.10.5",
+            "toolsId": "d548cb54-4a95-47ce-992c-0b69e93949b2"
         },
-        "TargetDetail": {
-          "viewType": "XML",
-          "transition": "slide",
-          "name" : "RouteDetail",
-          "controlAggregation": "midColumnPages",
-          "clearControlAggregation": false,
-          "viewId": "Detail",
-          "viewName": "Detail"
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/SAP/ZBB_MMT070_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/mainService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZBB_MMT010_SRV": {
+                "uri": "/sap/opu/odata/SAP/ZBB_MMT010_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZBB_MMT010_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "ZBB_MMT020_SRV": {
+                "uri": "/sap/opu/odata/SAP/ZBB_MMT020_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "localUri": "localService/ZBB_MMT020_SRV/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            }
         }
-      }
     },
-    "rootView": {
-      "viewName": "zbbproject030.view.App",
-      "type": "XML",
-      "async": true,
-      "id": "App"
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "dependencies": {
+            "minUI5Version": "1.120.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "config": {
+            "fullWidth": true
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zbbproject030.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            },
+            "ZBB_MMT010_SRV": {
+                "dataSource": "ZBB_MMT010_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "ZBB_MMT020_SRV": {
+                "dataSource": "ZBB_MMT020_SRV",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.f.routing.Router",
+                "type": "View",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "zbbproject030.view",
+                "transition": "slide",
+                "controlId": "flexibleColumnLayout",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteMain",
+                    "pattern": ":param3:",
+                    "target": [
+                        "TargetMain",
+                        "TargetDetail"
+                    ]
+                },
+                {
+                    "name": "RouteDetail",
+                    "pattern": "detail/{paramMatCd}/{param2}/:param3:",
+                    "target": [
+                        "TargetMain",
+                        "TargetDetail"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetMain": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "name": "RouteMain",
+                    "controlAggregation": "beginColumnPages",
+                    "clearControlAggregation": false,
+                    "viewId": "Main",
+                    "viewName": "Main"
+                },
+                "TargetDetail": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "name": "RouteDetail",
+                    "controlAggregation": "midColumnPages",
+                    "clearControlAggregation": false,
+                    "viewId": "Detail",
+                    "viewName": "Detail"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "zbbproject030.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
     }
-  }
 }
