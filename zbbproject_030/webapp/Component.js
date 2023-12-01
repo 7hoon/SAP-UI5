@@ -24,17 +24,36 @@ sap.ui.define(
        * @override
        */
       init: function () {
-
+        var oModel,
+				oRouter;
         // call the base component's init function
         UIComponent.prototype.init.apply(this, arguments);
 
 
         // enable routing
-        this.getRouter().initialize();
+        // this.getRouter().initialize();
 
         // set the device model
-        this.setModel(models.createDeviceModel(), "device");
+        // this.setModel(models.createDeviceModel(), "device");
+
+        oModel = new JSONModel();
+        this.setModel(oModel);
+
+        oRouter = this.getRouter();
+        oRouter.attachBeforeRouteMatched(this._onBeforeRouteMatched, this);
+        oRouter.initialize();
       },
+      _onBeforeRouteMatched: function(oEvent) {
+        var oModel = this.getModel(),
+          sLayout = oEvent.getParameters().arguments.layout;
+  
+        // If there is no layout parameter, set a default layout (normally OneColumn)
+        if (!sLayout) {
+          sLayout = fioriLibrary.LayoutType.OneColumn;
+        }
+  
+        oModel.setProperty("/param3", sLayout);
+      }
     });
   }
 );
